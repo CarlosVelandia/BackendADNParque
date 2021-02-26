@@ -1,0 +1,1 @@
+insert into parque (nombre, codigo,direccion,telefono) values (:nombre, :codigo, :direccion, :telefono)
