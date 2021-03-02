@@ -23,8 +23,7 @@ public class MapeoTiquete implements RowMapper<DtoTiquete>, MapperResult {
 
         Long idUsuario = resultSet.getLong("id_usuario");
         String nombreUsuario = resultSet.getString("nombre_usuario");
-        String clave = resultSet.getString("clave");
-        LocalDateTime fecha = extraerLocalDateTime(resultSet, "fecha_creacion");
+        String cedula = resultSet.getString("cedula");
 
         Long idParque = resultSet.getLong("id_parque");
         String nombreParque = resultSet.getString("nombre_parque");
@@ -32,7 +31,7 @@ public class MapeoTiquete implements RowMapper<DtoTiquete>, MapperResult {
         String direccion = resultSet.getString("direccion");
         String telefono = resultSet.getString("telefono");
 
-        DtoUsuario usuario = new DtoUsuario(idUsuario, nombreUsuario, clave, fecha);
+        DtoUsuario usuario = new DtoUsuario(idUsuario, nombreUsuario, cedula);
         DtoParque parque = new DtoParque(idParque, nombreParque, codigo, direccion, telefono);
 
         return new DtoTiquete(id, usuario, parque, fechaCompra, valor);

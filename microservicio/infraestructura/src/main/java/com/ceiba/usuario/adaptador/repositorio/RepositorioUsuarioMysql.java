@@ -27,6 +27,9 @@ public class RepositorioUsuarioMysql implements RepositorioUsuario {
     @SqlStatement(namespace="usuario", value="existeExcluyendoId") 
     private static String sqlExisteExcluyendoId;
 
+    @SqlStatement(namespace="usuario", value = "existeId")
+    private static String sqlExisteId;
+
     public RepositorioUsuarioMysql(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
         this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;
     }
@@ -64,5 +67,14 @@ public class RepositorioUsuarioMysql implements RepositorioUsuario {
         paramSource.addValue("nombre", nombre);
 
         return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExisteExcluyendoId,paramSource, Boolean.class);
+    }
+
+    @Override
+    public boolean existeId(Long id) {
+        MapSqlParameterSource paramSource = new MapSqlParameterSource();
+        paramSource.addValue("id", id);
+
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExisteId,
+                paramSource, Boolean.class);
     }
 }

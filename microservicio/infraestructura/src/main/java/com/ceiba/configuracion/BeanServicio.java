@@ -52,8 +52,8 @@ public class BeanServicio {
 
     //BeanServiciosTiquete
     @Bean
-    public ServicioCrearTiquete servicioCrearTiquete(RepositorioTiquete repositorioTiquete){
-        return new ServicioCrearTiquete(repositorioTiquete);
+    public ServicioCrearTiquete servicioCrearTiquete(RepositorioTiquete repositorioTiquete, RepositorioUsuario repositorioUsuario, RepositorioParque repositorioParque){
+        return new ServicioCrearTiquete(repositorioTiquete, repositorioUsuario, repositorioParque);
     }
     @Bean
     public ServicioActualizarTiquete servicioActualizarTiquete(RepositorioTiquete repositorioTiquete){

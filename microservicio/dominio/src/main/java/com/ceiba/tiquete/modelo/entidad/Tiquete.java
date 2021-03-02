@@ -13,7 +13,8 @@ public class Tiquete {
     private static final String SE_DEBE_INGRESAR_LA_FECHA_DE_COMPRA = "Se debe ingresar la fecha de la compra";
     private static final String SE_DEBE_INGRESAR_EL_ID_DEL_USUARIO = "Se debe ingresar el id del usuario";
     private static final String SE_DEBE_INGRESAR_EL_ID_DEL_PARQUE = "Se debe ingresar el id del parque";
-    private static final String SE_DEBE_INGRESAR_LA_CANTIDAD_DE_TIQUETES = "Se debe ingresar el la cantidad de tiquetes a comprar";
+
+    public static final double VALOR_TIQUETE = 15000;
 
     private Long id;
     private Long idUsuario;
@@ -32,6 +33,6 @@ public class Tiquete {
         this.idUsuario=idUsuario;
         this.idParque=idParque;
         this.fechaCompra= LocalDate.parse(fechaCompra,formatter);
-        this.valor=0;
+        this.valor=VALOR_TIQUETE;
     }
 }

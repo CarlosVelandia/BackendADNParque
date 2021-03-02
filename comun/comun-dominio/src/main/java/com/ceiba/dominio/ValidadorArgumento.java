@@ -21,8 +21,8 @@ public class ValidadorArgumento {
         }
     }
     
-    public static void validarLongitud(String valor,int longitud,String mensaje){
-        if(valor.length() < longitud){
+    public static void validarLongitud(int valor,int longitud,String mensaje){
+        if(valor< longitud){
             throw new ExcepcionLongitudValor(mensaje);
         }
     }
@@ -91,6 +91,13 @@ public class ValidadorArgumento {
         try {
             Long.parseLong(valor);
         } catch (NumberFormatException numberFormatException) {
+            throw new ExcepcionValorInvalido(mensaje);
+        }
+    }
+    public static void validarAlfanumerico(String valor, String mensaje){
+        Pattern patronAlfanumerico = Pattern.compile("^[A-Za-z0-9]+$");
+        Matcher comparadorAlfanumerico = patronAlfanumerico.matcher(valor);
+        if (!comparadorAlfanumerico.matches()) {
             throw new ExcepcionValorInvalido(mensaje);
         }
     }

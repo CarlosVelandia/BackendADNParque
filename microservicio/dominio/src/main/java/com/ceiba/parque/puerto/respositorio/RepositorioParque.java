@@ -36,5 +36,12 @@ public interface RepositorioParque {
      */
     boolean existeExcluyendoId(Long id,String nombre);
 
+    /**
+     * Permite validar si existe un parque con un id
+     * @param id
+     * @return si existe o no
+     */
+    boolean existeId(Long id);
+
 
 }

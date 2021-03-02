@@ -27,6 +27,9 @@ public class RepositorioParqueMysql implements RepositorioParque {
     @SqlStatement(namespace="parque", value="existeExcluyendoId")
     private static String sqlExisteExcluyendoId;
 
+    @SqlStatement(namespace="parque", value="existeId")
+    private static String sqlExisteId;
+
     public RepositorioParqueMysql(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate){
         this.customNamedParameterJdbcTemplate=customNamedParameterJdbcTemplate;
     }
@@ -61,5 +64,14 @@ public class RepositorioParqueMysql implements RepositorioParque {
         paramSource.addValue("nombre", nombre);
 
         return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExisteExcluyendoId,paramSource,Boolean.class);
+    }
+
+    @Override
+    public boolean existeId(Long id) {
+        MapSqlParameterSource paramSource = new MapSqlParameterSource();
+        paramSource.addValue("id", id);
+
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExisteId,
+                paramSource, Boolean.class);
     }
 }

@@ -1,8 +1,7 @@
 create table usuario (
     id int(11) not null auto_increment,
     nombre_usuario varchar(100) not null,
-    clave varchar(45) not null,
-    fecha_creacion date null,
+    cedula varchar(15) not null,
     primary key (id)
 );
 create table parque (
