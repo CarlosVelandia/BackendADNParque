@@ -4,6 +4,10 @@ import com.ceiba.parque.puerto.respositorio.RepositorioParque;
 import com.ceiba.parque.servicio.ServicioActualizarParque;
 import com.ceiba.parque.servicio.ServicioCrearParque;
 import com.ceiba.parque.servicio.ServicioEliminarParque;
+import com.ceiba.tiquete.puerto.repositorio.RepositorioTiquete;
+import com.ceiba.tiquete.servicio.ServicioActualizarTiquete;
+import com.ceiba.tiquete.servicio.ServicioCrearTiquete;
+import com.ceiba.tiquete.servicio.ServicioEliminarTiquete;
 import com.ceiba.usuario.puerto.repositorio.RepositorioUsuario;
 import com.ceiba.usuario.servicio.ServicioActualizarUsuario;
 import com.ceiba.usuario.servicio.ServicioCrearUsuario;
@@ -44,5 +48,19 @@ public class BeanServicio {
     @Bean
     public ServicioActualizarParque servicioActualizarParque(RepositorioParque repositorioParque){
         return new ServicioActualizarParque(repositorioParque);
+    }
+
+    //BeanServiciosTiquete
+    @Bean
+    public ServicioCrearTiquete servicioCrearTiquete(RepositorioTiquete repositorioTiquete){
+        return new ServicioCrearTiquete(repositorioTiquete);
+    }
+    @Bean
+    public ServicioActualizarTiquete servicioActualizarTiquete(RepositorioTiquete repositorioTiquete){
+        return new ServicioActualizarTiquete(repositorioTiquete);
+    }
+    @Bean
+    public ServicioEliminarTiquete servicioEliminarTiquete(RepositorioTiquete repositorioTiquete){
+        return new ServicioEliminarTiquete(repositorioTiquete);
     }
 }

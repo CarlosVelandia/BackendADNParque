@@ -1,3 +1,3 @@
 delete 
-from parque
+from tiquete
 where id = :id

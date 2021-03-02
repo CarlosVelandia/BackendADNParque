@@ -22,6 +22,6 @@ public class DaoTiqueteMysql implements DaoTiquete {
 
     @Override
     public List<DtoTiquete> listar(){
-        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().query(sqlListar, new Ma)
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().query(sqlListar, new MapeoTiquete());
     }
 }

@@ -1,5 +1,5 @@
 update parque
-set nombre = :nombre,
+set nombre_parque = :nombre,
 	codigo = :codigo,
     direccion = :direccion,
     telefono = :telefono

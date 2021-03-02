@@ -1,1 +1,1 @@
-insert into parque (nombre, codigo,direccion,telefono) values (:nombre, :codigo, :direccion, :telefono)
+insert into tiquete (id_usuario,id_parque,fecha_compra,valor) values (:idUsuario, :idParque, :fechaCompra, :valor)

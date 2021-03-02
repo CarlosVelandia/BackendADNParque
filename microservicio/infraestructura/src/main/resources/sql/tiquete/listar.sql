@@ -1,9 +1,7 @@
-select id,nombre,codigo,direccion,telefono
+select tiquete.id,tiquete.fecha_compra,tiquete.valor,
+       usuario.id as id_usuario, usuario.nombre_usuario, usuario.clave, usuario.fecha_creacion,
+       parque.id as id_parque, parque.nombre_parque, parque.codigo, parque.direccion, parque.telefono
 from tiquete
+inner join usuario on tiquete.id_usuario = usuario.id
+inner join parque on tiquete.id_parque = parque.id
 
-select alquiler.id,alquiler.fecha_alquiler,alquiler.fecha_entrega,alquiler.valor_pago,
-       cliente.id as id_cliente, cliente.nombre, cliente.direccion, cliente.telefono, cliente.cedula, cliente.correo,
-       moto.id as id_moto, moto.matricula, moto.marca, moto.modelo, moto.tipo_moto, moto.kilometros_recorridos, moto.precio_alquiler
-from alquiler
-         inner join cliente on alquiler.cliente_id = cliente.id
-         inner join moto on alquiler.moto_id = moto.id

@@ -14,7 +14,7 @@ public class MapeoUsuario implements RowMapper<DtoUsuario>, MapperResult {
     public DtoUsuario mapRow(ResultSet resultSet, int rowNum) throws SQLException {
 
         Long id = resultSet.getLong("id");
-        String nombre = resultSet.getString("nombre");
+        String nombre = resultSet.getString("nombre_usuario");
         String clave = resultSet.getString("clave");
         LocalDateTime fecha = extraerLocalDateTime(resultSet, "fecha_creacion");
 
