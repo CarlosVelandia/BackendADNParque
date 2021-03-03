@@ -9,21 +9,32 @@ public class ComandoUsuarioTestDataBuilder {
 
     private Long id;
     private String nombre;
-    private String clave;
-    private LocalDateTime fecha;
+    private String cedula;
+    ;
 
     public ComandoUsuarioTestDataBuilder() {
-        nombre = UUID.randomUUID().toString();
-        clave = "1234";
-        fecha = LocalDateTime.now();
+        //nombre = UUID.randomUUID().toString();
+        id= 0l;
+        nombre = "Carlos Velandia";
+        cedula = "1115081333";
     }
 
-    public ComandoUsuarioTestDataBuilder conNombre(String nombre) {
+    public ComandoUsuarioTestDataBuilder conId(Long id) {
+        this.id = id;
+        return this;
+    }
+
+    public ComandoUsuarioTestDataBuilder conNombre(String nombre){
         this.nombre = nombre;
         return this;
     }
 
+    public ComandoUsuarioTestDataBuilder conCedula(String cedula) {
+        this.cedula = cedula;
+        return this;
+    }
+
     public ComandoUsuario build() {
-        return new ComandoUsuario(id,nombre, clave,fecha);
+        return new ComandoUsuario(id,nombre, cedula);
     }
 }
