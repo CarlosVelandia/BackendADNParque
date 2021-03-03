@@ -1,11 +1,11 @@
 package com.ceiba.usuario.adaptador.dao;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
 import com.ceiba.infraestructura.jdbc.MapperResult;
 import com.ceiba.usuario.modelo.dto.DtoUsuario;
 import org.springframework.jdbc.core.RowMapper;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class MapeoUsuario implements RowMapper<DtoUsuario>, MapperResult {
 
@@ -16,7 +16,7 @@ public class MapeoUsuario implements RowMapper<DtoUsuario>, MapperResult {
         String nombre = resultSet.getString("nombre_usuario");
         String cedula = resultSet.getString("cedula");
 
-        return new DtoUsuario(id,nombre,cedula);
+        return new DtoUsuario(id, nombre, cedula);
     }
 
 }

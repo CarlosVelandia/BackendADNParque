@@ -10,18 +10,18 @@ public class ServicioActualizarParque {
 
     private final RepositorioParque repositorioParque;
 
-    public ServicioActualizarParque(RepositorioParque repositorioParque){
-        this.repositorioParque=repositorioParque;
+    public ServicioActualizarParque(RepositorioParque repositorioParque) {
+        this.repositorioParque = repositorioParque;
     }
 
-    public void ejecutar(Parque parque){
+    public void ejecutar(Parque parque) {
         validarExistenciaPrevia(parque);
         this.repositorioParque.actualizar(parque);
     }
 
-    private void validarExistenciaPrevia(Parque parque){
-        boolean existe =this.repositorioParque.existeExcluyendoId(parque.getId(), parque.getNombre());
-        if(existe){
+    private void validarExistenciaPrevia(Parque parque) {
+        boolean existe = this.repositorioParque.existeExcluyendoId(parque.getId(), parque.getNombre());
+        if (existe) {
             throw new ExcepcionDuplicidad(EL_PARQUE_YA_EXISTE_EN_EL_SISTEMA);
         }
     }

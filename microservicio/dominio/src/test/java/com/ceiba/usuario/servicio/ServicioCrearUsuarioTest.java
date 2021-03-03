@@ -1,18 +1,17 @@
 package com.ceiba.usuario.servicio;
 
+import com.ceiba.BasePrueba;
+import com.ceiba.dominio.excepcion.ExcepcionDuplicidad;
 import com.ceiba.dominio.excepcion.ExcepcionValorInvalido;
 import com.ceiba.dominio.excepcion.ExcepcionValorObligatorio;
 import com.ceiba.usuario.modelo.entidad.Usuario;
 import com.ceiba.usuario.puerto.repositorio.RepositorioUsuario;
-import com.ceiba.dominio.excepcion.ExcepcionDuplicidad;
 import com.ceiba.usuario.servicio.testdatabuilder.UsuarioTestDataBuilder;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-
-import com.ceiba.BasePrueba;
 import org.mockito.MockitoAnnotations;
 
 public class ServicioCrearUsuarioTest {
@@ -29,22 +28,22 @@ public class ServicioCrearUsuarioTest {
     private ServicioCrearUsuario servicioCrearUsuario;
 
     @Before
-    public void init(){
+    public void init() {
         MockitoAnnotations.initMocks(this);
     }
 
     @Test
-    public void validarNombreObligatorioTest(){
+    public void validarNombreObligatorioTest() {
         // arrange
-        UsuarioTestDataBuilder usuarioTestDataBuilder=new UsuarioTestDataBuilder().conNombre(null);
+        UsuarioTestDataBuilder usuarioTestDataBuilder = new UsuarioTestDataBuilder().conNombre(null);
         // act - assert
         BasePrueba.assertThrows(() -> usuarioTestDataBuilder.build(), ExcepcionValorObligatorio.class, SE_DEBE_INGRESAR_EL_NOMBRE_DE_USUARIO);
     }
 
     @Test
-    public void validarCedulaObligatorioTest(){
+    public void validarCedulaObligatorioTest() {
         // arrange
-        UsuarioTestDataBuilder usuarioTestDataBuilder=new UsuarioTestDataBuilder().conCedula(null);
+        UsuarioTestDataBuilder usuarioTestDataBuilder = new UsuarioTestDataBuilder().conCedula(null);
         // act - assert
         BasePrueba.assertThrows(() -> usuarioTestDataBuilder.build(), ExcepcionValorObligatorio.class, SE_DEBE_INGRESAR_LA_CEDULA);
     }
@@ -66,17 +65,17 @@ public class ServicioCrearUsuarioTest {
         Mockito.when(repositorioUsuario.existe(Mockito.anyString())).thenReturn(true);
         ServicioCrearUsuario servicioCrearUsuario = new ServicioCrearUsuario(repositorioUsuario);
         // act - assert
-        BasePrueba.assertThrows(() -> servicioCrearUsuario.ejecutar(usuario), ExcepcionDuplicidad.class,"El usuario ya existe en el sistema");
+        BasePrueba.assertThrows(() -> servicioCrearUsuario.ejecutar(usuario), ExcepcionDuplicidad.class, "El usuario ya existe en el sistema");
     }
 
     @Test
-    public void validarCreacionUsuarioTest(){
+    public void validarCreacionUsuarioTest() {
         // arrange
         Usuario usuario = new UsuarioTestDataBuilder().conId(1l).build();
         Mockito.when(repositorioUsuario.existeId(usuario.getId())).thenReturn(false);
         Mockito.when(repositorioUsuario.crear(usuario)).thenReturn(1l);
         // act - assert
-        Long idUsuario= servicioCrearUsuario.ejecutar(usuario);
+        Long idUsuario = servicioCrearUsuario.ejecutar(usuario);
         // assert
         BasePrueba.assertEqualsObject(usuario.getId(), idUsuario);
     }

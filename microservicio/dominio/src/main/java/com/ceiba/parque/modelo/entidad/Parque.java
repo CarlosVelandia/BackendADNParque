@@ -21,16 +21,16 @@ public class Parque {
     private String direccion;
     private String telefono;
 
-    public Parque(Long id,String nombre,String codigo,String direccion,String telefono) {
+    public Parque(Long id, String nombre, String codigo, String direccion, String telefono) {
         validarObligatorio(nombre, SE_DEBE_INGRESAR_EL_NOMBRE_DEL_PARQUE);
         validarObligatorio(codigo, SE_DEBE_INGRESAR_EL_CODIGO_DEL_PARQUE);
         validarObligatorio(direccion, SE_DEBE_INGRESAR_LA_DIRECCION);
         validarObligatorio(telefono, SE_DEBE_INGRESAR_EL_TELEFONO);
 
-        validarNumerico(telefono,EL_TELEFONO_DEBE_SER_NUMERICO);
-        validarPositivo(Double.parseDouble(telefono),EL_TELEFONO_DEBE_SER_POSITIVO);
+        validarNumerico(telefono, EL_TELEFONO_DEBE_SER_NUMERICO);
+        validarPositivo(Double.parseDouble(telefono), EL_TELEFONO_DEBE_SER_POSITIVO);
 
-        validarAlfanumerico(codigo,CODIGO_NO_ES_ALFANUMERICO);
+        validarAlfanumerico(codigo, CODIGO_NO_ES_ALFANUMERICO);
 
         this.id = id;
         this.nombre = nombre;

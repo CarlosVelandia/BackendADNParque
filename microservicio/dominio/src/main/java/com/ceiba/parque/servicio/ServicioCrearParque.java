@@ -10,18 +10,18 @@ public class ServicioCrearParque {
 
     private final RepositorioParque repositorioParque;
 
-    public ServicioCrearParque(RepositorioParque repositorioParque){
-        this.repositorioParque=repositorioParque;
+    public ServicioCrearParque(RepositorioParque repositorioParque) {
+        this.repositorioParque = repositorioParque;
     }
 
-    public Long ejecutar(Parque parque){
+    public Long ejecutar(Parque parque) {
         validarExistenciaPrevia(parque);
         return this.repositorioParque.crear(parque);
     }
 
-    private void validarExistenciaPrevia(Parque parque){
-        boolean existe =this.repositorioParque.existe(parque.getNombre());
-        if(existe){
+    private void validarExistenciaPrevia(Parque parque) {
+        boolean existe = this.repositorioParque.existe(parque.getNombre());
+        if (existe) {
             throw new ExcepcionDuplicidad(EL_PARQUE_YA_EXISTE_EN_EL_SISTEMA);
         }
     }

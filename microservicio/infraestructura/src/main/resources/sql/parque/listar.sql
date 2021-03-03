@@ -1,2 +1,2 @@
-select id,nombre_parque,codigo,direccion,telefono
+select id, nombre_parque, codigo, direccion, telefono
 from parque

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/parques")
-@Api(tags={"Controlador comando parque"})
+@Api(tags = {"Controlador comando parque"})
 public class ComandoControladorParque {
 
     private final ManejadorCrearParque manejadorCrearParque;
@@ -20,28 +20,28 @@ public class ComandoControladorParque {
     private final ManejadorEliminarParque manejadorEliminarParque;
 
     @Autowired
-    public ComandoControladorParque(ManejadorCrearParque manejadorCrearParque, ManejadorActualizarParque manejadorActualizarParque, ManejadorEliminarParque manejadorEliminarParque){
-        this.manejadorCrearParque =manejadorCrearParque;
-        this.manejadorActualizarParque=manejadorActualizarParque;
-        this.manejadorEliminarParque=manejadorEliminarParque;
+    public ComandoControladorParque(ManejadorCrearParque manejadorCrearParque, ManejadorActualizarParque manejadorActualizarParque, ManejadorEliminarParque manejadorEliminarParque) {
+        this.manejadorCrearParque = manejadorCrearParque;
+        this.manejadorActualizarParque = manejadorActualizarParque;
+        this.manejadorEliminarParque = manejadorEliminarParque;
     }
 
     @PostMapping
     @ApiOperation("Crear Parque")
-    public ComandoRespuesta<Long> crear(@RequestBody ComandoParque comandoParque){
+    public ComandoRespuesta<Long> crear(@RequestBody ComandoParque comandoParque) {
         return manejadorCrearParque.ejecutar(comandoParque);
     }
 
     @PutMapping(value = "/{id}")
     @ApiOperation("Actualizar Parque")
-    public void actualizar(@RequestBody ComandoParque comandoParque,@PathVariable Long id){
+    public void actualizar(@RequestBody ComandoParque comandoParque, @PathVariable Long id) {
         comandoParque.setId(id);
         manejadorActualizarParque.ejecutar(comandoParque);
     }
 
     @DeleteMapping(value = "/{id}")
     @ApiOperation("Eliminar Parque")
-    public void eliminar(@PathVariable Long id){
+    public void eliminar(@PathVariable Long id) {
         manejadorEliminarParque.ejecutar(id);
     }
 }

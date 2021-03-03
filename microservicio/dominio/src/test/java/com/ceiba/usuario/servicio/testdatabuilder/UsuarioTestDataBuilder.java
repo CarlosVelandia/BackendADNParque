@@ -2,9 +2,6 @@ package com.ceiba.usuario.servicio.testdatabuilder;
 
 import com.ceiba.usuario.modelo.entidad.Usuario;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-
 public class UsuarioTestDataBuilder {
 
     private Long id;
@@ -12,7 +9,7 @@ public class UsuarioTestDataBuilder {
     private String cedula;
 
     public UsuarioTestDataBuilder() {
-        this.id=0l;
+        this.id = 0l;
         nombre = "Manoloo";
         cedula = "11150813334";
     }
@@ -33,6 +30,6 @@ public class UsuarioTestDataBuilder {
     }
 
     public Usuario build() {
-        return new Usuario(id,nombre, cedula);
+        return new Usuario(id, nombre, cedula);
     }
 }

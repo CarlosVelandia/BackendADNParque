@@ -4,9 +4,6 @@ import com.ceiba.infraestructura.jdbc.CustomNamedParameterJdbcTemplate;
 import com.ceiba.infraestructura.jdbc.sqlstatement.SqlStatement;
 import com.ceiba.parque.modelo.dto.DtoParque;
 import com.ceiba.parque.puerto.dao.DaoParque;
-import com.ceiba.usuario.adaptador.dao.MapeoUsuario;
-import com.ceiba.usuario.modelo.dto.DtoUsuario;
-import com.ceiba.usuario.puerto.dao.DaoUsuario;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -17,14 +14,14 @@ public class DaoParqueMysql implements DaoParque {
     private final CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate;
 
     @SqlStatement(namespace = "parque", value = "listar")
-    private static  String sqlListar;
+    private static String sqlListar;
 
-    public DaoParqueMysql(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate){
+    public DaoParqueMysql(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
         this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;
     }
 
     @Override
-    public List<DtoParque> listar(){
+    public List<DtoParque> listar() {
         return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().query(sqlListar, new MapeoParque());
     }
 }

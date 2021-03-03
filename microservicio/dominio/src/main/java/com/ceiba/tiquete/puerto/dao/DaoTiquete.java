@@ -7,6 +7,7 @@ import java.util.List;
 public interface DaoTiquete {
     /**
      * Permite listar tiquetes
+     *
      * @return los tiquetes
      */
     List<DtoTiquete> listar();

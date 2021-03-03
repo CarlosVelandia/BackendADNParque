@@ -7,11 +7,11 @@ public class ServicioActualizarTiquete {
 
     private final RepositorioTiquete repositorioTiquete;
 
-    public ServicioActualizarTiquete(RepositorioTiquete repositorioTiquete){
-        this.repositorioTiquete=repositorioTiquete;
+    public ServicioActualizarTiquete(RepositorioTiquete repositorioTiquete) {
+        this.repositorioTiquete = repositorioTiquete;
     }
 
-    public void ejecutar(Tiquete tiquete){
+    public void ejecutar(Tiquete tiquete) {
         this.repositorioTiquete.actualizar(tiquete);
     }
 }

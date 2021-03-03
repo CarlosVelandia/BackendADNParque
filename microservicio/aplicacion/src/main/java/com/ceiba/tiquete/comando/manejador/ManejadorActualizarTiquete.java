@@ -13,13 +13,13 @@ public class ManejadorActualizarTiquete implements ManejadorComando<ComandoTique
     private final FabricaTiquete fabricaTiquete;
     private final ServicioActualizarTiquete servicioActualizarTiquete;
 
-    public ManejadorActualizarTiquete(FabricaTiquete fabricaTiquete, ServicioActualizarTiquete servicioActualizarTiquete){
-        this.fabricaTiquete=fabricaTiquete;
-        this.servicioActualizarTiquete=servicioActualizarTiquete;
+    public ManejadorActualizarTiquete(FabricaTiquete fabricaTiquete, ServicioActualizarTiquete servicioActualizarTiquete) {
+        this.fabricaTiquete = fabricaTiquete;
+        this.servicioActualizarTiquete = servicioActualizarTiquete;
     }
 
-    public void ejecutar(ComandoTiquete comandoTiquete){
-        Tiquete tiquete=this.fabricaTiquete.crear(comandoTiquete);
+    public void ejecutar(ComandoTiquete comandoTiquete) {
+        Tiquete tiquete = this.fabricaTiquete.crear(comandoTiquete);
         this.servicioActualizarTiquete.ejecutar(tiquete);
     }
 }

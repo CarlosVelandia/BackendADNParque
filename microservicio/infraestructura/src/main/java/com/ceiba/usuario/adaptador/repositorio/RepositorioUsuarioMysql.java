@@ -12,22 +12,22 @@ public class RepositorioUsuarioMysql implements RepositorioUsuario {
 
     private final CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate;
 
-    @SqlStatement(namespace="usuario", value="crear")
+    @SqlStatement(namespace = "usuario", value = "crear")
     private static String sqlCrear;
 
-    @SqlStatement(namespace="usuario", value="actualizar")
+    @SqlStatement(namespace = "usuario", value = "actualizar")
     private static String sqlActualizar;
 
-    @SqlStatement(namespace="usuario", value="eliminar")
+    @SqlStatement(namespace = "usuario", value = "eliminar")
     private static String sqlEliminar;
 
-    @SqlStatement(namespace="usuario", value="existe")
+    @SqlStatement(namespace = "usuario", value = "existe")
     private static String sqlExiste;
 
-    @SqlStatement(namespace="usuario", value="existeExcluyendoId") 
+    @SqlStatement(namespace = "usuario", value = "existeExcluyendoId")
     private static String sqlExisteExcluyendoId;
 
-    @SqlStatement(namespace="usuario", value = "existeId")
+    @SqlStatement(namespace = "usuario", value = "existeId")
     private static String sqlExisteId;
 
     public RepositorioUsuarioMysql(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
@@ -52,7 +52,7 @@ public class RepositorioUsuarioMysql implements RepositorioUsuario {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
         paramSource.addValue("nombre", nombre);
 
-        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExiste,paramSource, Boolean.class);
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExiste, paramSource, Boolean.class);
     }
 
     @Override
@@ -66,7 +66,7 @@ public class RepositorioUsuarioMysql implements RepositorioUsuario {
         paramSource.addValue("id", id);
         paramSource.addValue("nombre", nombre);
 
-        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExisteExcluyendoId,paramSource, Boolean.class);
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExisteExcluyendoId, paramSource, Boolean.class);
     }
 
     @Override

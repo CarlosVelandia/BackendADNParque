@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class FabricaParque {
 
-    public Parque crear(ComandoParque comandoParque){
+    public Parque crear(ComandoParque comandoParque) {
         return new Parque(
                 comandoParque.getId(),
                 comandoParque.getNombre(),

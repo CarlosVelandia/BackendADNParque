@@ -6,11 +6,11 @@ public class ServicioEliminarTiquete {
 
     private final RepositorioTiquete repositorioTiquete;
 
-    public ServicioEliminarTiquete(RepositorioTiquete repositorioTiquete){
-        this.repositorioTiquete=repositorioTiquete;
+    public ServicioEliminarTiquete(RepositorioTiquete repositorioTiquete) {
+        this.repositorioTiquete = repositorioTiquete;
     }
 
-    public void ejecutar(Long id){
+    public void ejecutar(Long id) {
         this.repositorioTiquete.eliminar(id);
     }
 }

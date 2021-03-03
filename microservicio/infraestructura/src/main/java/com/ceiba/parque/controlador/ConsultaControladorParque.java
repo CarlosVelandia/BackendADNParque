@@ -17,13 +17,13 @@ public class ConsultaControladorParque {
 
     private final ManejadorListarParques manejadorListarParques;
 
-    public ConsultaControladorParque(ManejadorListarParques manejadorListarParques){
+    public ConsultaControladorParque(ManejadorListarParques manejadorListarParques) {
         this.manejadorListarParques = manejadorListarParques;
     }
 
     @GetMapping
     @ApiOperation("Listar Parques")
-    public List<DtoParque> listar(){
+    public List<DtoParque> listar() {
         return this.manejadorListarParques.ejecutar();
     }
 }

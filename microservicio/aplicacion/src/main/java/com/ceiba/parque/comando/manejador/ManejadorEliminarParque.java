@@ -9,11 +9,11 @@ public class ManejadorEliminarParque implements ManejadorComando<Long> {
 
     private final ServicioEliminarParque servicioEliminarParque;
 
-    public ManejadorEliminarParque(ServicioEliminarParque servicioEliminarParque){
-        this.servicioEliminarParque=servicioEliminarParque;
+    public ManejadorEliminarParque(ServicioEliminarParque servicioEliminarParque) {
+        this.servicioEliminarParque = servicioEliminarParque;
     }
 
-    public void ejecutar(Long idParque){
+    public void ejecutar(Long idParque) {
         this.servicioEliminarParque.ejecutar(idParque);
     }
 }

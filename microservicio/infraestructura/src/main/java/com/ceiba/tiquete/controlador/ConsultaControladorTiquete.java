@@ -17,12 +17,13 @@ public class ConsultaControladorTiquete {
 
     private final ManejadorListarTiquetes manejadorListarTiquetes;
 
-    public ConsultaControladorTiquete(ManejadorListarTiquetes manejadorListarTiquetes){
-        this.manejadorListarTiquetes=manejadorListarTiquetes;
+    public ConsultaControladorTiquete(ManejadorListarTiquetes manejadorListarTiquetes) {
+        this.manejadorListarTiquetes = manejadorListarTiquetes;
     }
+
     @GetMapping
     @ApiOperation("Listar Tiquetes")
-    public List<DtoTiquete> listar(){
+    public List<DtoTiquete> listar() {
         return this.manejadorListarTiquetes.ejecutar();
     }
 }

@@ -6,8 +6,8 @@ public class ServicioEliminarParque {
 
     private final RepositorioParque repositorioParque;
 
-    public ServicioEliminarParque(RepositorioParque repositorioParque){
-        this.repositorioParque= repositorioParque;
+    public ServicioEliminarParque(RepositorioParque repositorioParque) {
+        this.repositorioParque = repositorioParque;
     }
 
     public void ejecutar(Long id) {

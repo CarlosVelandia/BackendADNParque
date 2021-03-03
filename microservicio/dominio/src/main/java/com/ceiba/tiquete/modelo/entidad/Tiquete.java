@@ -22,17 +22,17 @@ public class Tiquete {
     private LocalDate fechaCompra;
     private double valor;
 
-    public Tiquete(Long id,Long idUsuario, Long idParque, String fechaCompra,Double valor){
-        validarObligatorio(idUsuario,SE_DEBE_INGRESAR_EL_ID_DEL_USUARIO);
-        validarObligatorio(idParque,SE_DEBE_INGRESAR_EL_ID_DEL_PARQUE);
-        validarObligatorio(fechaCompra,SE_DEBE_INGRESAR_LA_FECHA_DE_COMPRA);
+    public Tiquete(Long id, Long idUsuario, Long idParque, String fechaCompra, Double valor) {
+        validarObligatorio(idUsuario, SE_DEBE_INGRESAR_EL_ID_DEL_USUARIO);
+        validarObligatorio(idParque, SE_DEBE_INGRESAR_EL_ID_DEL_PARQUE);
+        validarObligatorio(fechaCompra, SE_DEBE_INGRESAR_LA_FECHA_DE_COMPRA);
 
-        DateTimeFormatter formatter= DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
-        this.id=id;
-        this.idUsuario=idUsuario;
-        this.idParque=idParque;
-        this.fechaCompra= LocalDate.parse(fechaCompra,formatter);
-        this.valor=VALOR_TIQUETE;
+        this.id = id;
+        this.idUsuario = idUsuario;
+        this.idParque = idParque;
+        this.fechaCompra = LocalDate.parse(fechaCompra, formatter);
+        this.valor = VALOR_TIQUETE;
     }
 }

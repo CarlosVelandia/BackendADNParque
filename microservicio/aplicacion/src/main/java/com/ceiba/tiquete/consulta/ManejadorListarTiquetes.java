@@ -11,11 +11,11 @@ public class ManejadorListarTiquetes {
 
     private final DaoTiquete daoTiquete;
 
-    public ManejadorListarTiquetes(DaoTiquete daoTiquete){
-        this.daoTiquete=daoTiquete;
+    public ManejadorListarTiquetes(DaoTiquete daoTiquete) {
+        this.daoTiquete = daoTiquete;
     }
 
-    public List<DtoTiquete> ejecutar(){
+    public List<DtoTiquete> ejecutar() {
         return this.daoTiquete.listar();
     }
 }

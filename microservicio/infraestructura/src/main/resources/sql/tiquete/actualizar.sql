@@ -1,6 +1,6 @@
 update tiquete
-set id_usuario = :idUsuario,
-	id_parque = :idParque,
+set id_usuario   = :idUsuario,
+    id_parque    = :idParque,
     fecha_compra = :fechaCompra,
-    valor = :valor
+    valor        = :valor
 where id = :id

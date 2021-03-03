@@ -14,12 +14,13 @@ public class ManejadorCrearTiquete implements ManejadorComandoRespuesta<ComandoT
     private final FabricaTiquete fabricaTiquete;
     private final ServicioCrearTiquete servicioCrearTiquete;
 
-    public ManejadorCrearTiquete(FabricaTiquete fabricaTiquete, ServicioCrearTiquete servicioCrearTiquete){
-        this.fabricaTiquete=fabricaTiquete;
-        this.servicioCrearTiquete=servicioCrearTiquete;
+    public ManejadorCrearTiquete(FabricaTiquete fabricaTiquete, ServicioCrearTiquete servicioCrearTiquete) {
+        this.fabricaTiquete = fabricaTiquete;
+        this.servicioCrearTiquete = servicioCrearTiquete;
     }
-    public ComandoRespuesta<Long> ejecutar(ComandoTiquete comandoTiquete){
-        Tiquete tiquete=this.fabricaTiquete.crear(comandoTiquete);
+
+    public ComandoRespuesta<Long> ejecutar(ComandoTiquete comandoTiquete) {
+        Tiquete tiquete = this.fabricaTiquete.crear(comandoTiquete);
         return new ComandoRespuesta<>(this.servicioCrearTiquete.ejecutar(tiquete));
     }
 }

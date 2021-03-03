@@ -13,7 +13,7 @@ public class ManejadorEliminarTiquete implements ManejadorComando<Long> {
         this.servicioEliminarTiquete = servicioEliminarTiquete;
     }
 
-    public void ejecutar(Long idTiquete){
+    public void ejecutar(Long idTiquete) {
         this.servicioEliminarTiquete.ejecutar(idTiquete);
     }
 }

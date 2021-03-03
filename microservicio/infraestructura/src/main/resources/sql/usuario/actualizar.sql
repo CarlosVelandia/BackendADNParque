@@ -1,4 +1,4 @@
 update usuario
 set nombre_usuario = :nombre,
-	cedula = :cedula
+    cedula         = :cedula
 where id = :id

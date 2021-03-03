@@ -36,31 +36,33 @@ public class BeanServicio {
 
     //BeanServiciosParque
     @Bean
-    public ServicioCrearParque servicioCrearParque(RepositorioParque repositorioParque){
+    public ServicioCrearParque servicioCrearParque(RepositorioParque repositorioParque) {
         return new ServicioCrearParque(repositorioParque);
     }
 
     @Bean
-    public ServicioEliminarParque servicioEliminarParque(RepositorioParque repositorioParque){
+    public ServicioEliminarParque servicioEliminarParque(RepositorioParque repositorioParque) {
         return new ServicioEliminarParque(repositorioParque);
     }
 
     @Bean
-    public ServicioActualizarParque servicioActualizarParque(RepositorioParque repositorioParque){
+    public ServicioActualizarParque servicioActualizarParque(RepositorioParque repositorioParque) {
         return new ServicioActualizarParque(repositorioParque);
     }
 
     //BeanServiciosTiquete
     @Bean
-    public ServicioCrearTiquete servicioCrearTiquete(RepositorioTiquete repositorioTiquete, RepositorioUsuario repositorioUsuario, RepositorioParque repositorioParque){
+    public ServicioCrearTiquete servicioCrearTiquete(RepositorioTiquete repositorioTiquete, RepositorioUsuario repositorioUsuario, RepositorioParque repositorioParque) {
         return new ServicioCrearTiquete(repositorioTiquete, repositorioUsuario, repositorioParque);
     }
+
     @Bean
-    public ServicioActualizarTiquete servicioActualizarTiquete(RepositorioTiquete repositorioTiquete){
+    public ServicioActualizarTiquete servicioActualizarTiquete(RepositorioTiquete repositorioTiquete) {
         return new ServicioActualizarTiquete(repositorioTiquete);
     }
+
     @Bean
-    public ServicioEliminarTiquete servicioEliminarTiquete(RepositorioTiquete repositorioTiquete){
+    public ServicioEliminarTiquete servicioEliminarTiquete(RepositorioTiquete repositorioTiquete) {
         return new ServicioEliminarTiquete(repositorioTiquete);
     }
 }

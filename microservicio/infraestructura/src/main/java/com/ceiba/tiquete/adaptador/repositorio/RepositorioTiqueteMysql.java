@@ -15,31 +15,31 @@ public class RepositorioTiqueteMysql implements RepositorioTiquete {
     @SqlStatement(namespace = "tiquete", value = "crear")
     private static String sqlCrear;
 
-    @SqlStatement(namespace="tiquete", value="actualizar")
+    @SqlStatement(namespace = "tiquete", value = "actualizar")
     private static String sqlActualizar;
 
-    @SqlStatement(namespace="tiquete", value="eliminar")
+    @SqlStatement(namespace = "tiquete", value = "eliminar")
     private static String sqlEliminar;
 
-    public RepositorioTiqueteMysql(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate){
-        this.customNamedParameterJdbcTemplate=customNamedParameterJdbcTemplate;
+    public RepositorioTiqueteMysql(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
+        this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;
     }
 
     @Override
-    public Long crear(Tiquete tiquete){
+    public Long crear(Tiquete tiquete) {
         return this.customNamedParameterJdbcTemplate.crear(tiquete, sqlCrear);
     }
 
     @Override
-    public void eliminar(Long id){
-        MapSqlParameterSource paramSource=new MapSqlParameterSource();
-        paramSource.addValue("id",id);
+    public void eliminar(Long id) {
+        MapSqlParameterSource paramSource = new MapSqlParameterSource();
+        paramSource.addValue("id", id);
 
         this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().update(sqlEliminar, paramSource);
     }
 
     @Override
-    public void actualizar(Tiquete tiquete){
+    public void actualizar(Tiquete tiquete) {
         this.customNamedParameterJdbcTemplate.actualizar(tiquete, sqlActualizar);
     }
 }

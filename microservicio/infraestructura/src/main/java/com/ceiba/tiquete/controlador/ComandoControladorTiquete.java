@@ -20,28 +20,28 @@ public class ComandoControladorTiquete {
     private final ManejadorEliminarTiquete manejadorEliminarTiquete;
 
     @Autowired
-    public ComandoControladorTiquete(ManejadorCrearTiquete manejadorCrearTiquete,ManejadorActualizarTiquete manejadorActualizarTiquete, ManejadorEliminarTiquete manejadorEliminarTiquete){
-        this.manejadorCrearTiquete=manejadorCrearTiquete;
-        this.manejadorActualizarTiquete=manejadorActualizarTiquete;
-        this.manejadorEliminarTiquete=manejadorEliminarTiquete;
+    public ComandoControladorTiquete(ManejadorCrearTiquete manejadorCrearTiquete, ManejadorActualizarTiquete manejadorActualizarTiquete, ManejadorEliminarTiquete manejadorEliminarTiquete) {
+        this.manejadorCrearTiquete = manejadorCrearTiquete;
+        this.manejadorActualizarTiquete = manejadorActualizarTiquete;
+        this.manejadorEliminarTiquete = manejadorEliminarTiquete;
     }
 
     @PostMapping
     @ApiOperation("Crear Tiquete")
-    public ComandoRespuesta<Long> crear(@RequestBody ComandoTiquete comandoTiquete){
+    public ComandoRespuesta<Long> crear(@RequestBody ComandoTiquete comandoTiquete) {
         return manejadorCrearTiquete.ejecutar(comandoTiquete);
     }
 
     @PutMapping(value = "/{id}")
     @ApiOperation("Actualizar Tiquete")
-    public void actualizar(@RequestBody ComandoTiquete comandoTiquete,@PathVariable Long id){
+    public void actualizar(@RequestBody ComandoTiquete comandoTiquete, @PathVariable Long id) {
         comandoTiquete.setId(id);
         manejadorActualizarTiquete.ejecutar(comandoTiquete);
     }
 
-    @DeleteMapping(value="/{id})")
+    @DeleteMapping(value = "/{id})")
     @ApiOperation("Eliminar Tiquete")
-    public void eliminar(@PathVariable Long id){
+    public void eliminar(@PathVariable Long id) {
         manejadorEliminarTiquete.ejecutar(id);
     }
 }

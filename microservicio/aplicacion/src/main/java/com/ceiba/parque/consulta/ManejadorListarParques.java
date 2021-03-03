@@ -11,9 +11,11 @@ public class ManejadorListarParques {
 
     private final DaoParque daoParque;
 
-    public ManejadorListarParques(DaoParque daoParque){this.daoParque= daoParque;}
+    public ManejadorListarParques(DaoParque daoParque) {
+        this.daoParque = daoParque;
+    }
 
-    public List<DtoParque> ejecutar(){
+    public List<DtoParque> ejecutar() {
         return this.daoParque.listar();
     }
 }

@@ -13,15 +13,15 @@ public class DaoTiqueteMysql implements DaoTiquete {
 
     private final CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate;
 
-    @SqlStatement(namespace = "tiquete", value ="listar")
+    @SqlStatement(namespace = "tiquete", value = "listar")
     private static String sqlListar;
 
-    public DaoTiqueteMysql(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate){
-        this.customNamedParameterJdbcTemplate=customNamedParameterJdbcTemplate;
+    public DaoTiqueteMysql(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
+        this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;
     }
 
     @Override
-    public List<DtoTiquete> listar(){
+    public List<DtoTiquete> listar() {
         return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().query(sqlListar, new MapeoTiquete());
     }
 }

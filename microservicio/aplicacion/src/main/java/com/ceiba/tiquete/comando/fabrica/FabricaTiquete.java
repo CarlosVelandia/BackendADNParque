@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class FabricaTiquete {
 
-    public Tiquete crear(ComandoTiquete comandoTiquete){
+    public Tiquete crear(ComandoTiquete comandoTiquete) {
         return new Tiquete(
                 comandoTiquete.getId(),
                 comandoTiquete.getIdUsuario(),

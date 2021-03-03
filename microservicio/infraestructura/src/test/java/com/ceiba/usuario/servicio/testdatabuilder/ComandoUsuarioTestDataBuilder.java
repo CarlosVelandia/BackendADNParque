@@ -2,9 +2,6 @@ package com.ceiba.usuario.servicio.testdatabuilder;
 
 import com.ceiba.usuario.comando.ComandoUsuario;
 
-import java.time.LocalDateTime;
-import java.util.UUID;
-
 public class ComandoUsuarioTestDataBuilder {
 
     private Long id;
@@ -14,7 +11,7 @@ public class ComandoUsuarioTestDataBuilder {
 
     public ComandoUsuarioTestDataBuilder() {
         //nombre = UUID.randomUUID().toString();
-        id= 0l;
+        id = 0l;
         nombre = "Carlos Velandia";
         cedula = "1115081333";
     }
@@ -24,7 +21,7 @@ public class ComandoUsuarioTestDataBuilder {
         return this;
     }
 
-    public ComandoUsuarioTestDataBuilder conNombre(String nombre){
+    public ComandoUsuarioTestDataBuilder conNombre(String nombre) {
         this.nombre = nombre;
         return this;
     }
@@ -35,6 +32,6 @@ public class ComandoUsuarioTestDataBuilder {
     }
 
     public ComandoUsuario build() {
-        return new ComandoUsuario(id,nombre, cedula);
+        return new ComandoUsuario(id, nombre, cedula);
     }
 }

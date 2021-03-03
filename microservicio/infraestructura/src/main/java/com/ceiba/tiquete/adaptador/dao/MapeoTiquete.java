@@ -6,11 +6,9 @@ import com.ceiba.tiquete.modelo.dto.DtoTiquete;
 import com.ceiba.usuario.modelo.dto.DtoUsuario;
 import org.springframework.jdbc.core.RowMapper;
 
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 public class MapeoTiquete implements RowMapper<DtoTiquete>, MapperResult {
     @Override
