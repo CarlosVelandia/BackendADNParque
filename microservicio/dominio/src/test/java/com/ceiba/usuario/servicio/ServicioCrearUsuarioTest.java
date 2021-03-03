@@ -59,6 +59,7 @@ public class ServicioCrearUsuarioTest {
 
     @Test
     public void validarUsuarioExistenciaPreviaTest() {
+
         // arrange
         Usuario usuario = new UsuarioTestDataBuilder().build();
         RepositorioUsuario repositorioUsuario = Mockito.mock(RepositorioUsuario.class);
