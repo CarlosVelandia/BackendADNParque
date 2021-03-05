@@ -34,6 +34,14 @@ public interface RepositorioUsuario {
     boolean existe(String nombre);
 
     /**
+     * Permite validar si existe un usuario con la cedula
+     *
+     * @param cedula
+     * @return si existe o no
+     */
+    boolean existeCedula(String cedula);
+
+    /**
      * Permite validar si existe un usuario con un nombre excluyendo un id
      *
      * @param nombre
