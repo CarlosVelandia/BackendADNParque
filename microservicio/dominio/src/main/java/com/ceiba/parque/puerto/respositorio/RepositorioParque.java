@@ -2,6 +2,7 @@ package com.ceiba.parque.puerto.respositorio;
 
 import com.ceiba.parque.modelo.entidad.Parque;
 
+
 public interface RepositorioParque {
     /**
      * Permite crear un parque
@@ -56,8 +57,4 @@ public interface RepositorioParque {
      * @return si existe o no
      */
     boolean existeCodigo(String codigo);
-
-
-
-
 }

@@ -7,6 +7,8 @@ import com.ceiba.tiquete.puerto.repositorio.RepositorioTiquete;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
+
 @Repository
 public class RepositorioTiqueteMysql implements RepositorioTiquete {
 
@@ -20,6 +22,15 @@ public class RepositorioTiqueteMysql implements RepositorioTiquete {
 
     @SqlStatement(namespace = "tiquete", value = "eliminar")
     private static String sqlEliminar;
+
+    @SqlStatement(namespace = "tiquete", value = "existeTiqueteFechaYCedula")
+    private static String sqlExisteTiqueteFechaYCedula;
+
+    @SqlStatement(namespace = "tiquete", value = "maximoTiquetesVendidos")
+    private static String sqlMaximoTiquetesVendidos;
+
+
+
 
     public RepositorioTiqueteMysql(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
         this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;
@@ -41,5 +52,23 @@ public class RepositorioTiqueteMysql implements RepositorioTiquete {
     @Override
     public void actualizar(Tiquete tiquete) {
         this.customNamedParameterJdbcTemplate.actualizar(tiquete, sqlActualizar);
+    }
+
+    @Override
+    public int existeTiqueteFechaYCedula(LocalDate fechaCompra, Long idUsuario) {
+        MapSqlParameterSource paramSource = new MapSqlParameterSource();
+        paramSource.addValue("fechaCompra", fechaCompra);
+        paramSource.addValue("idUsuario", idUsuario);
+
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExisteTiqueteFechaYCedula, paramSource, Integer.class);
+    }
+
+    @Override
+    public int maximoTiquetesVendidos(LocalDate fechaCompra, Long idParque) {
+        MapSqlParameterSource paramSource = new MapSqlParameterSource();
+        paramSource.addValue("fechaCompra", fechaCompra);
+        paramSource.addValue("idParque", idParque);
+
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlMaximoTiquetesVendidos, paramSource, Integer.class);
     }
 }
