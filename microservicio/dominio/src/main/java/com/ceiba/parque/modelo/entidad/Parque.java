@@ -13,7 +13,9 @@ public class Parque {
     private static final String SE_DEBE_INGRESAR_EL_CODIGO_DEL_PARQUE = "Se debe ingresar el codigo del parque";
     private static final String EL_TELEFONO_DEBE_SER_NUMERICO = "La Telefono debe ser numerica, no debe contener simbolos, ni espacios";
     private static final String EL_TELEFONO_DEBE_SER_POSITIVO = "La Telefono debe ser numerica positiva";
-    private static final String CODIGO_NO_ES_ALFANUMERICO = "El codigo debe ser Alfanumerico, no debe contener simbolos, ni espacios";
+    private static final String CODIGO_DEBE_SER_ALFANUMERICO = "El codigo debe ser Alfanumerico, no debe contener simbolos, ni espacios";
+    private static final String EL_NOMBRE_DEBE_SER_TEXTO = "El nombre solo puede contener letas, sin numeros ni simbolos";
+
 
     private Long id;
     private String nombre;
@@ -26,11 +28,12 @@ public class Parque {
         validarObligatorio(codigo, SE_DEBE_INGRESAR_EL_CODIGO_DEL_PARQUE);
         validarObligatorio(direccion, SE_DEBE_INGRESAR_LA_DIRECCION);
         validarObligatorio(telefono, SE_DEBE_INGRESAR_EL_TELEFONO);
+        validarSoloLetras(nombre,EL_NOMBRE_DEBE_SER_TEXTO);
 
         validarNumerico(telefono, EL_TELEFONO_DEBE_SER_NUMERICO);
         validarPositivo(Double.parseDouble(telefono), EL_TELEFONO_DEBE_SER_POSITIVO);
 
-        validarAlfanumerico(codigo, CODIGO_NO_ES_ALFANUMERICO);
+        validarAlfanumerico(codigo, CODIGO_DEBE_SER_ALFANUMERICO);
 
         this.id = id;
         this.nombre = nombre;

@@ -46,5 +46,11 @@ public interface RepositorioTiquete {
      */
     int maximoTiquetesVendidos(LocalDate fechaCompra, Long idParque);
 
-
+    /**
+     * Permite validar si existe un tiquete con un id
+     *
+     * @param id
+     * @return si existe o no
+     */
+    boolean existeId(Long id);
 }

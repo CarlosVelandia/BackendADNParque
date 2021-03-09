@@ -96,8 +96,16 @@ public class ValidadorArgumento {
             throw new ExcepcionValorInvalido(mensaje);
         }
     }
+
     public static void validarAlfanumerico(String valor, String mensaje){
         Pattern patronAlfanumerico = Pattern.compile("^[A-Za-z0-9]+$");
+        Matcher comparadorAlfanumerico = patronAlfanumerico.matcher(valor);
+        if (!comparadorAlfanumerico.matches()) {
+            throw new ExcepcionValorInvalido(mensaje);
+        }
+    }
+    public static void validarSoloLetras(String valor, String mensaje){
+        Pattern patronAlfanumerico = Pattern.compile("^[A-Za-z]+$");
         Matcher comparadorAlfanumerico = patronAlfanumerico.matcher(valor);
         if (!comparadorAlfanumerico.matches()) {
             throw new ExcepcionValorInvalido(mensaje);

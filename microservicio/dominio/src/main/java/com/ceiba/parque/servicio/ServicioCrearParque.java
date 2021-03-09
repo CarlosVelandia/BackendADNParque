@@ -35,7 +35,6 @@ public class ServicioCrearParque {
             throw new ExcepcionDuplicidad(EL_CODIGO_DEL_PARQUE_YA_EXISTE_EN_EL_SISTEMA);
         }
     }
-
     private void validarExistenciaParqueId(Parque parque){
         boolean existe = this.repositorioParque.existeId(parque.getId());
         if (existe) {

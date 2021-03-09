@@ -29,7 +29,8 @@ public class RepositorioTiqueteMysql implements RepositorioTiquete {
     @SqlStatement(namespace = "tiquete", value = "maximoTiquetesVendidos")
     private static String sqlMaximoTiquetesVendidos;
 
-
+    @SqlStatement(namespace = "tiquete", value = "existeId")
+    private static String sqlExisteId;
 
 
     public RepositorioTiqueteMysql(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
@@ -71,4 +72,13 @@ public class RepositorioTiqueteMysql implements RepositorioTiquete {
 
         return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlMaximoTiquetesVendidos, paramSource, Integer.class);
     }
+
+    @Override
+    public boolean existeId(Long id) {
+        MapSqlParameterSource paramSource = new MapSqlParameterSource();
+        paramSource.addValue("id", id);
+
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExisteId, paramSource, Boolean.class);
+    }
+
 }

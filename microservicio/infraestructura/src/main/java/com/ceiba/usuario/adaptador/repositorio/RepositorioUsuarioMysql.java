@@ -30,9 +30,6 @@ public class RepositorioUsuarioMysql implements RepositorioUsuario {
     @SqlStatement(namespace = "usuario", value = "existeId")
     private static String sqlExisteId;
 
-    @SqlStatement(namespace = "usuario", value = "existeCedula")
-    private static String sqlExisteCedula;
-
     public RepositorioUsuarioMysql(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
         this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;
     }
@@ -51,23 +48,15 @@ public class RepositorioUsuarioMysql implements RepositorioUsuario {
     }
 
     @Override
-    public boolean existe(String nombre) {
-        MapSqlParameterSource paramSource = new MapSqlParameterSource();
-        paramSource.addValue("nombre", nombre);
-
-        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExiste, paramSource, Boolean.class);
-    }
-
-    @Override
     public void actualizar(Usuario usuario) {
         this.customNamedParameterJdbcTemplate.actualizar(usuario, sqlActualizar);
     }
 
     @Override
-    public boolean existeExcluyendoId(Long id, String nombre) {
+    public boolean existeExcluyendoId(Long id, String cedula) {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
         paramSource.addValue("id", id);
-        paramSource.addValue("nombre", nombre);
+        paramSource.addValue("cedula", cedula);
 
         return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExisteExcluyendoId, paramSource, Boolean.class);
     }
@@ -78,15 +67,6 @@ public class RepositorioUsuarioMysql implements RepositorioUsuario {
         paramSource.addValue("id", id);
 
         return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExisteId,
-                paramSource, Boolean.class);
-    }
-
-    @Override
-    public boolean existeCedula(String cedula) {
-        MapSqlParameterSource paramSource = new MapSqlParameterSource();
-        paramSource.addValue("cedula", cedula);
-
-        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExisteCedula,
                 paramSource, Boolean.class);
     }
 }

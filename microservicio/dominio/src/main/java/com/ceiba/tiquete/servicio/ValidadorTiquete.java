@@ -32,32 +32,24 @@ public class ValidadorTiquete {
     }
 
     public void validarDiaLunes(LocalDate fechaCompra) {
-
         if (fechaCompra.getDayOfWeek() == DayOfWeek.MONDAY) {
             throw new ExcepcionTiquete(LUNES_NO_SE_VENDEN_TIQUETES);
         }
     }
     public void validarFinDeSemana(Tiquete tiquete) {
-
-
         if (tiquete.getFechaCompra().getDayOfWeek() == DayOfWeek.FRIDAY) {
-            System.out.println("es Viernes");
             tiquete.setValor(VALOR_TIQUETE_FIN_DE_SEMANA);
         }else {
             if (tiquete.getFechaCompra().getDayOfWeek()== DayOfWeek.SATURDAY) {
-                System.out.println("es Sabado");
                 tiquete.setValor(VALOR_TIQUETE_FIN_DE_SEMANA);
             }else {
                 if (tiquete.getFechaCompra().getDayOfWeek()== DayOfWeek.SUNDAY) {
-                    System.out.println("es Domingo");
                     tiquete.setValor(VALOR_TIQUETE_FIN_DE_SEMANA);
                 }else{
                     tiquete.setValor(VALOR_TIQUETE_SEMANA);
                 }
-                //return repositorioTiquete.crear(tiquete);
             }
         }
-
     }
 
         public void maximoTiquetesParque(Tiquete tiquete){

@@ -17,22 +17,13 @@ public class ServicioActualizarUsuario {
 
     public void ejecutar(Usuario usuario) {
         validarExistenciaPrevia(usuario);
-        validarExistenciaPreviaCedula(usuario);
         this.repositorioUsuario.actualizar(usuario);
     }
 
     private void validarExistenciaPrevia(Usuario usuario) {
-        boolean existe = this.repositorioUsuario.existeExcluyendoId(usuario.getId(), usuario.getNombre());
+        boolean existe = this.repositorioUsuario.existeExcluyendoId(usuario.getId(), usuario.getCedula());
         if (!existe) {
             throw new ExcepcionDuplicidad(EL_USUARIO_NO_EXISTE_EN_EL_SISTEMA);
         }
     }
-
-    private void validarExistenciaPreviaCedula(Usuario usuario) {
-        boolean existe = this.repositorioUsuario.existeCedula(usuario.getCedula());
-        if (!existe) {
-            throw new ExcepcionDuplicidad(LA_CEDULA_USUARIO_NO_EXISTE_EN_EL_SISTEMA);
-        }
-    }
-
 }

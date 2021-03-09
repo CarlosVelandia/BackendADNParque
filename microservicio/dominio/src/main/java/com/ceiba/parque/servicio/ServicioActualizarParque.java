@@ -7,7 +7,7 @@ import com.ceiba.usuario.modelo.entidad.Usuario;
 
 public class ServicioActualizarParque {
 
-    private static final String EL_PARQUE_NO_EXISTE_EN_EL_SISTEMA = "El parque ya existe en el sistema";
+    private static final String EL_PARQUE_NO_EXISTE_EN_EL_SISTEMA = "El parque no existe en el sistema";
     private static final String EL_CODIGO_PARQUE_NO_EXISTE_EN_EL_SISTEMA = "El codigo del parque no existe en el sistema";
 
     private final RepositorioParque repositorioParque;

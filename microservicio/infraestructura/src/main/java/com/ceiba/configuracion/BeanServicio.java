@@ -1,7 +1,5 @@
 package com.ceiba.configuracion;
 
-
-import com.ceiba.parque.puerto.dao.DaoParque;
 import com.ceiba.parque.puerto.respositorio.RepositorioParque;
 import com.ceiba.parque.servicio.ServicioActualizarParque;
 import com.ceiba.parque.servicio.ServicioCrearParque;
@@ -52,14 +50,15 @@ public class BeanServicio {
         return new ServicioActualizarParque(repositorioParque);
     }
 
+    //BeanServiciosTiquete
     @Bean
     public ServicioCrearTiquete servicioCrearTiquete(RepositorioTiquete repositorioTiquete, RepositorioUsuario repositorioUsuario, RepositorioParque repositorioParque) {
         return new ServicioCrearTiquete(repositorioTiquete, repositorioUsuario, repositorioParque);
     }
 
     @Bean
-    public ServicioActualizarTiquete servicioActualizarTiquete(RepositorioTiquete repositorioTiquete) {
-        return new ServicioActualizarTiquete(repositorioTiquete);
+    public ServicioActualizarTiquete servicioActualizarTiquete(RepositorioTiquete repositorioTiquete, RepositorioUsuario repositorioUsuario, RepositorioParque repositorioParque) {
+        return new ServicioActualizarTiquete(repositorioTiquete, repositorioUsuario, repositorioParque);
     }
 
     @Bean
