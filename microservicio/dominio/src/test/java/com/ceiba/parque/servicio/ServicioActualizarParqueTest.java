@@ -31,7 +31,8 @@ public class ServicioActualizarParqueTest {
     @Test
     public void validarExistenciaPreviaCodigo(){
         //arrange
-        Parque parque = new ParqueTestDataBuilder().conCodigo("637904").build();
+        Parque parque = new ParqueTestDataBuilder().conId(1l).conCodigo("637904").build();
+        Mockito.when(repositorioParque.existeExcluyendoId(parque.getId(), parque.getNombre())).thenReturn(true);
         Mockito.when(repositorioParque.existeCodigo(parque.getCodigo())).thenReturn(false);
         //act - assert
         BasePrueba.assertThrows(()-> servicioActualizarParque.ejecutar(parque), ExcepcionDuplicidad.class,EL_CODIGO_PARQUE_NO_EXISTE_EN_EL_SISTEMA);
