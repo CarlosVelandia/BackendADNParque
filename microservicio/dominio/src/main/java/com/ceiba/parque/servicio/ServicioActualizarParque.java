@@ -18,7 +18,7 @@ public class ServicioActualizarParque {
 
     public void ejecutar(Parque parque) {
         validarExistenciaPreviaParque(parque);
-        validarExistenciaPreviaCedula(parque);
+        validarExistenciaPreviaCodigo(parque);
         this.repositorioParque.actualizar(parque);
     }
 
@@ -29,7 +29,7 @@ public class ServicioActualizarParque {
         }
     }
 
-    private void validarExistenciaPreviaCedula(Parque parque) {
+    private void validarExistenciaPreviaCodigo(Parque parque) {
         boolean existe = this.repositorioParque.existeCodigo(parque.getCodigo());
         if (!existe) {
             throw new ExcepcionDuplicidad(EL_CODIGO_PARQUE_NO_EXISTE_EN_EL_SISTEMA);

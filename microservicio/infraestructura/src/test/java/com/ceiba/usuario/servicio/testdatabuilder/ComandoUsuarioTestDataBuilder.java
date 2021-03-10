@@ -10,7 +10,6 @@ public class ComandoUsuarioTestDataBuilder {
     ;
 
     public ComandoUsuarioTestDataBuilder() {
-        //nombre = UUID.randomUUID().toString();
         id = 0l;
         nombre = "Carlos Velandia";
         cedula = "1115081333";

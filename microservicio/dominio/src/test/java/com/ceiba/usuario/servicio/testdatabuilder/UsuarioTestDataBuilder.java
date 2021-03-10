@@ -10,8 +10,8 @@ public class UsuarioTestDataBuilder {
 
     public UsuarioTestDataBuilder() {
         this.id = 0l;
-        nombre = "Manoloo";
-        cedula = "11150813334";
+        this.nombre = "Manoloo";
+        this.cedula = "1115081333";
     }
 
     public UsuarioTestDataBuilder conNombre(String nombre) {

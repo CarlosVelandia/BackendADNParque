@@ -8,6 +8,7 @@ import com.ceiba.usuario.puerto.repositorio.RepositorioUsuario;
 public class ServicioCrearUsuario {
 
     private static final String LA_CEDULA_YA_EXISTE = "El usuario ya existe en el sistema con la cedula";
+    private static final String EL_USUARIO_YA_EXISTE="EL usuario ya existe en el sistema";
 
     private final RepositorioUsuario repositorioUsuario;
 
@@ -31,7 +32,7 @@ public class ServicioCrearUsuario {
     private void validarExistenciaUsuarioId(Usuario usuario) {
         boolean existe = this.repositorioUsuario.existeId(usuario.getId());
         if (existe) {
-            throw new ExcepcionDuplicidad(LA_CEDULA_YA_EXISTE);
+            throw new ExcepcionDuplicidad(EL_USUARIO_YA_EXISTE);
         }
     }
 }

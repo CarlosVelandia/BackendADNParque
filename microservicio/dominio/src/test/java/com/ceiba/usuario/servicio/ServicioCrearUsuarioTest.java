@@ -18,8 +18,12 @@ public class ServicioCrearUsuarioTest {
 
     private static final String SE_DEBE_INGRESAR_LA_CEDULA = "Se debe ingresar la cedula";
     private static final String SE_DEBE_INGRESAR_EL_NOMBRE_DE_USUARIO = "Se debe ingresar el nombre de usuario";
-    private static final String LA_CEDULA_DEBE_SER_NUMERICO = "La Cedula debe ser numerica, no debe contener simbolos, ni espacios";
+    private static final String LA_CEDULA_DEBE_SER_NUMERICA = "La Cedula debe ser numerica, no debe contener simbolos, ni espacios";
     private static final String LA_CEDULA_DEBE_SER_POSITIVA = "La Cedula debe ser numerica positiva";
+    private static final String EL_USUARIO_YA_EXISTE="EL usuario ya existe en el sistema";
+    private static final String LA_CEDULA_YA_EXISTE = "El usuario ya existe en el sistema con la cedula";
+    private static final String EL_NOMBRE_DEBE_SER_TEXTO = "El nombre solo puede contener letas, sin numeros ni simbolos";
+
 
     @Mock
     private RepositorioUsuario repositorioUsuario;
@@ -51,21 +55,43 @@ public class ServicioCrearUsuarioTest {
     @Test
     public void validarCedulaNumericaTest() {
         // arrange
-        UsuarioTestDataBuilder usuarioTestDataBuilder = new UsuarioTestDataBuilder().conCedula("numero");
+        UsuarioTestDataBuilder usuarioTestDataBuilder = new UsuarioTestDataBuilder().conCedula("numerous");
         // act - assert
-        BasePrueba.assertThrows(() -> usuarioTestDataBuilder.build(), ExcepcionValorInvalido.class, LA_CEDULA_DEBE_SER_NUMERICO);
+        BasePrueba.assertThrows(() -> usuarioTestDataBuilder.build(), ExcepcionValorInvalido.class, LA_CEDULA_DEBE_SER_NUMERICA);
     }
 
     @Test
-    public void validarUsuarioExistenciaPreviaTest() {
-
+    public void validarCedulaNumericaPositivaTest() {
         // arrange
-        Usuario usuario = new UsuarioTestDataBuilder().build();
-        RepositorioUsuario repositorioUsuario = Mockito.mock(RepositorioUsuario.class);
-        Mockito.when(repositorioUsuario.existe(Mockito.anyString())).thenReturn(true);
-        ServicioCrearUsuario servicioCrearUsuario = new ServicioCrearUsuario(repositorioUsuario);
+        UsuarioTestDataBuilder usuarioTestDataBuilder = new UsuarioTestDataBuilder().conCedula("-123456");
         // act - assert
-        BasePrueba.assertThrows(() -> servicioCrearUsuario.ejecutar(usuario), ExcepcionDuplicidad.class, "El usuario ya existe en el sistema");
+        BasePrueba.assertThrows(() -> usuarioTestDataBuilder.build(), ExcepcionValorInvalido.class, LA_CEDULA_DEBE_SER_POSITIVA);
+    }
+
+    @Test
+    public void validarValidarTextoNombre() {
+        // arrange
+        UsuarioTestDataBuilder usuarioTestDataBuilder = new UsuarioTestDataBuilder().conNombre("Test 123");
+        // act - assert
+        BasePrueba.assertThrows(() -> usuarioTestDataBuilder.build(), ExcepcionValorInvalido.class, EL_NOMBRE_DEBE_SER_TEXTO);
+    }
+
+    @Test
+    public void validarExistenciaPreviaExcluyendoId(){
+        //arrange
+        Usuario usuario = new UsuarioTestDataBuilder().build();
+        Mockito.when(repositorioUsuario.existeExcluyendoId(usuario.getId(), usuario.getCedula())).thenReturn(true);
+        //act - assert
+        BasePrueba.assertThrows(()-> servicioCrearUsuario.ejecutar(usuario),ExcepcionDuplicidad.class,LA_CEDULA_YA_EXISTE );
+    }
+
+    @Test
+    public void validarExistenciaPreviaId(){
+        //arrange
+        Usuario usuario = new UsuarioTestDataBuilder().build();
+        Mockito.when(repositorioUsuario.existeId(usuario.getId())).thenReturn(true);
+        //act - assert
+        BasePrueba.assertThrows(()-> servicioCrearUsuario.ejecutar(usuario),ExcepcionDuplicidad.class,EL_USUARIO_YA_EXISTE );
     }
 
     @Test

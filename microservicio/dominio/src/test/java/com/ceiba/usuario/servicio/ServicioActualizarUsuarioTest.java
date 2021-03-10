@@ -14,7 +14,7 @@ import org.mockito.MockitoAnnotations;
 
 public class ServicioActualizarUsuarioTest {
 
-    private static final String EL_USUARIO_YA_EXISTE = "El usuario ya existe en el sistema";
+    private static final String EL_USUARIO_NO_EXISTE_EN_EL_SISTEMA = "El usuario no existe en el sistema";
 
     @Mock
     private RepositorioUsuario repositorioUsuario;
@@ -28,52 +28,22 @@ public class ServicioActualizarUsuarioTest {
     }
 
     @Test
-    public void validarUsuarioExistenciaPreviaTest() {
-        // arrange
-        Usuario usuario = new UsuarioTestDataBuilder().conId(1L).build();
-        RepositorioUsuario repositorioUsuario = Mockito.mock(RepositorioUsuario.class);
-        Mockito.when(repositorioUsuario.existeExcluyendoId(Mockito.anyLong(), Mockito.anyString())).thenReturn(true);
-        ServicioActualizarUsuario servicioActualizarUsuario = new ServicioActualizarUsuario(repositorioUsuario);
-        // act - assert
-        BasePrueba.assertThrows(() -> servicioActualizarUsuario.ejecutar(usuario), ExcepcionDuplicidad.class, EL_USUARIO_YA_EXISTE);
+    public void validarExistenciaPreviaUsuario() {
+        //arrange
+        Usuario usuario = new UsuarioTestDataBuilder().build();
+        Mockito.when(repositorioUsuario.existeExcluyendoId(usuario.getId(), usuario.getCedula())).thenReturn(false);
+        //act - assert
+        BasePrueba.assertThrows(() -> servicioActualizarUsuario.ejecutar(usuario), ExcepcionDuplicidad.class, EL_USUARIO_NO_EXISTE_EN_EL_SISTEMA);
     }
 
     @Test
     public void validarActualizarUsuarioTest() {
-        //arrange
+        // arrange
         Usuario usuario = new UsuarioTestDataBuilder().conId(1l).build();
-        Mockito.when(repositorioUsuario.existeId(usuario.getId())).thenReturn(true);
-        //act
+        Mockito.when(repositorioUsuario.existeExcluyendoId(usuario.getId(), usuario.getCedula())).thenReturn(true);
+        // act - assert
         servicioActualizarUsuario.ejecutar(usuario);
-        //-assert
+        // assert
         Mockito.verify(repositorioUsuario).actualizar(usuario);
     }
-/*
-    @Test
-    public void validarActualizarUsuarioTest(){
-        //arrange
-        Usuario usuario = new UsuarioTestDataBuilder().conId(1l).build();
-        Mockito.when(repositorioUsuario.existeId(anyLong())).thenReturn(true);
-    }
-
- */
-
-/*
-    @Test
-    public void validarActualizarUsuarioTest() {
-        // arrange
-        Usuario usuario = new UsuarioTestDataBuilder().build();
-        RepositorioUsuario repositorioUsuario = Mockito.mock(RepositorioUsuario.class);
-        Mockito.when(repositorioUsuario.existeId(anyLong())).thenReturn(true);
-        Mockito.when(repositorioUsuario.existeExcluyendoId(anyLong(), anyString())).thenReturn(true);
-        ServicioActualizarUsuario servicioActualizarUsuario = new ServicioActualizarUsuario(repositorioUsuario);
-
-        // act
-        servicioActualizarUsuario.ejecutar(usuario);
-
-        // assert
-        Mockito.verify(repositorioUsuario, Mockito.times(1)).actualizar(usuario);
-    }
-
- */
 }
