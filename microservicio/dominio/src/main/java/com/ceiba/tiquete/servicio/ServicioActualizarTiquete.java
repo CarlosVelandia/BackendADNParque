@@ -22,7 +22,7 @@ public class ServicioActualizarTiquete {
         this.repositorioTiquete = repositorioTiquete;
         this.repositorioUsuario = repositorioUsuario;
         this.repositorioParque = repositorioParque;
-        this.validadorTiquete = new ValidadorTiquete(this.repositorioTiquete, this.repositorioUsuario, this.repositorioParque);
+        this.validadorTiquete = new ValidadorTiquete(this.repositorioTiquete);
 
     }
 

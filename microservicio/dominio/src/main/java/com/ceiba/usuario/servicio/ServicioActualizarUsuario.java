@@ -7,7 +7,6 @@ import com.ceiba.usuario.puerto.repositorio.RepositorioUsuario;
 public class ServicioActualizarUsuario {
 
     private static final String EL_USUARIO_NO_EXISTE_EN_EL_SISTEMA = "El usuario no existe en el sistema";
-    private static final String LA_CEDULA_USUARIO_NO_EXISTE_EN_EL_SISTEMA = "La cedula del usuario no existe en el sistema";
 
     private final RepositorioUsuario repositorioUsuario;
 

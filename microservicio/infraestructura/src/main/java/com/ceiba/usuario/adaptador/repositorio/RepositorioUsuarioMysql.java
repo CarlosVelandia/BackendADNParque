@@ -12,23 +12,24 @@ public class RepositorioUsuarioMysql implements RepositorioUsuario {
 
     private final CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate;
 
-    @SqlStatement(namespace = "usuario", value = "crear")
-    private static String sqlCrear;
-
-    @SqlStatement(namespace = "usuario", value = "actualizar")
-    private static String sqlActualizar;
-
     @SqlStatement(namespace = "usuario", value = "eliminar")
     private static String sqlEliminar;
+
+    @SqlStatement(namespace = "usuario", value = "crear")
+    private static String sqlCrear;
 
     @SqlStatement(namespace = "usuario", value = "existe")
     private static String sqlExiste;
 
-    @SqlStatement(namespace = "usuario", value = "existeExcluyendoId")
-    private static String sqlExisteExcluyendoId;
+
+    @SqlStatement(namespace = "usuario", value = "actualizar")
+    private static String sqlActualizar;
 
     @SqlStatement(namespace = "usuario", value = "existeId")
     private static String sqlExisteId;
+
+    @SqlStatement(namespace = "usuario", value = "existeExcluyendoId")
+    private static String sqlExisteExcluyendoId;
 
     public RepositorioUsuarioMysql(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
         this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;

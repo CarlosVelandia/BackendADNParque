@@ -1,10 +1,8 @@
 package com.ceiba.tiquete.servicio;
 
-import com.ceiba.parque.puerto.respositorio.RepositorioParque;
 import com.ceiba.tiquete.excepcion.ExcepcionTiquete;
 import com.ceiba.tiquete.modelo.entidad.Tiquete;
 import com.ceiba.tiquete.puerto.repositorio.RepositorioTiquete;
-import com.ceiba.usuario.puerto.repositorio.RepositorioUsuario;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
@@ -21,13 +19,9 @@ public class ValidadorTiquete {
 
 
     private final RepositorioTiquete repositorioTiquete;
-    private final RepositorioParque repositorioParque;
-    private final RepositorioUsuario repositorioUsuario;
 
-    public ValidadorTiquete(RepositorioTiquete repositorioTiquete, RepositorioUsuario repositorioUsuario, RepositorioParque repositorioParque) {
+    public ValidadorTiquete(RepositorioTiquete repositorioTiquete) {
         this.repositorioTiquete = repositorioTiquete;
-        this.repositorioUsuario = repositorioUsuario;
-        this.repositorioParque = repositorioParque;
     }
 
     public void validarDiaLunes(LocalDate fechaCompra) {
