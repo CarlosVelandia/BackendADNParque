@@ -14,6 +14,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -21,6 +22,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @ContextConfiguration(classes = ApplicationMock.class)
 @WebMvcTest(ComandoControladorUsuario.class)
 public class ComandoControladorUsuarioTest {
+
+    private static final String CEDULA_USUARIO_NUEVO = "123456789";
+    private static final String NOMBRE_USUARIO_NUEVO = "Nuevo Pensonaje";
+    private static final String CEDULA_USUARIO_ACTUALIZAR = "987654321";
+    private static final String NOMBRE_USUARIO_ACTUALIZAR = "Actualizar Pensonaje";
 
     @Autowired
     private ObjectMapper objectMapper;
@@ -31,12 +37,13 @@ public class ComandoControladorUsuarioTest {
     @Test
     public void crear() throws Exception {
         // arrange
-        ComandoUsuario usuario = new ComandoUsuarioTestDataBuilder().build();
+        ComandoUsuario usuario = new ComandoUsuarioTestDataBuilder().conNombre(NOMBRE_USUARIO_NUEVO).conCedula(CEDULA_USUARIO_NUEVO).build();
 
         // act - assert
         mocMvc.perform(post("/usuarios")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(usuario)))
+                .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().json("{'valor': 2}"));
     }
@@ -45,7 +52,11 @@ public class ComandoControladorUsuarioTest {
     public void actualizar() throws Exception {
         // arrange
         Long id = 1L;
-        ComandoUsuario usuario = new ComandoUsuarioTestDataBuilder().build();
+        ComandoUsuario usuario = new ComandoUsuarioTestDataBuilder()
+                .conId(1l)
+                .conNombre(NOMBRE_USUARIO_ACTUALIZAR)
+                .conCedula(CEDULA_USUARIO_ACTUALIZAR)
+                .build();
 
         // act - assert
         mocMvc.perform(put("/usuarios/{id}", id)
@@ -57,7 +68,7 @@ public class ComandoControladorUsuarioTest {
     @Test
     public void eliminar() throws Exception {
         // arrange
-        Long id = 2L;
+        Long id = 1L;
 
         // act - assert
         mocMvc.perform(delete("/usuarios/{id}", id)

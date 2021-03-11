@@ -4,6 +4,7 @@ import com.ceiba.BasePrueba;
 import com.ceiba.dominio.excepcion.ExcepcionDuplicidad;
 import com.ceiba.dominio.excepcion.ExcepcionValorInvalido;
 import com.ceiba.dominio.excepcion.ExcepcionValorObligatorio;
+import com.ceiba.usuario.excepcion.ExcepcionUsuario;
 import com.ceiba.usuario.modelo.entidad.Usuario;
 import com.ceiba.usuario.puerto.repositorio.RepositorioUsuario;
 import com.ceiba.usuario.servicio.testdatabuilder.UsuarioTestDataBuilder;
@@ -82,7 +83,7 @@ public class ServicioCrearUsuarioTest {
         Usuario usuario = new UsuarioTestDataBuilder().build();
         Mockito.when(repositorioUsuario.existeExcluyendoId(usuario.getId(), usuario.getCedula())).thenReturn(true);
         //act - assert
-        BasePrueba.assertThrows(()-> servicioCrearUsuario.ejecutar(usuario),ExcepcionDuplicidad.class,LA_CEDULA_YA_EXISTE );
+        BasePrueba.assertThrows(()-> servicioCrearUsuario.ejecutar(usuario),ExcepcionUsuario.class,LA_CEDULA_YA_EXISTE );
     }
 
     @Test
@@ -91,7 +92,7 @@ public class ServicioCrearUsuarioTest {
         Usuario usuario = new UsuarioTestDataBuilder().build();
         Mockito.when(repositorioUsuario.existeId(usuario.getId())).thenReturn(true);
         //act - assert
-        BasePrueba.assertThrows(()-> servicioCrearUsuario.ejecutar(usuario),ExcepcionDuplicidad.class,EL_USUARIO_YA_EXISTE );
+        BasePrueba.assertThrows(()-> servicioCrearUsuario.ejecutar(usuario), ExcepcionUsuario.class,EL_USUARIO_YA_EXISTE );
     }
 
     @Test

@@ -2,6 +2,7 @@ package com.ceiba.usuario.servicio;
 
 import com.ceiba.BasePrueba;
 import com.ceiba.dominio.excepcion.ExcepcionDuplicidad;
+import com.ceiba.usuario.excepcion.ExcepcionUsuario;
 import com.ceiba.usuario.modelo.entidad.Usuario;
 import com.ceiba.usuario.puerto.repositorio.RepositorioUsuario;
 import com.ceiba.usuario.servicio.testdatabuilder.UsuarioTestDataBuilder;
@@ -33,7 +34,7 @@ public class ServicioEliminarUsuarioTest {
         Usuario usuario = new UsuarioTestDataBuilder().build();
         Mockito.when(repositorioUsuario.existeExcluyendoId(usuario.getId(), usuario.getCedula())).thenReturn(false);
         //act - assert
-        BasePrueba.assertThrows(() -> servicioEliminarUsuario.ejecutar(usuario.getId()), ExcepcionDuplicidad.class, El_USUARIO_NO_EXISTE);
+        BasePrueba.assertThrows(() -> servicioEliminarUsuario.ejecutar(usuario.getId()), ExcepcionUsuario.class, El_USUARIO_NO_EXISTE);
     }
 
     @Test

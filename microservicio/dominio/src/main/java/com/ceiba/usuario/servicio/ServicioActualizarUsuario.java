@@ -1,6 +1,7 @@
 package com.ceiba.usuario.servicio;
 
 import com.ceiba.dominio.excepcion.ExcepcionDuplicidad;
+import com.ceiba.usuario.excepcion.ExcepcionUsuario;
 import com.ceiba.usuario.modelo.entidad.Usuario;
 import com.ceiba.usuario.puerto.repositorio.RepositorioUsuario;
 
@@ -21,9 +22,9 @@ public class ServicioActualizarUsuario {
     }
 
     private void validarExistenciaPrevia(Usuario usuario) {
-        boolean existe = this.repositorioUsuario.existeExcluyendoId(usuario.getId(), usuario.getCedula());
+        boolean existe = this.repositorioUsuario.existeId(usuario.getId());
         if (!existe) {
-            throw new ExcepcionDuplicidad(EL_USUARIO_NO_EXISTE_EN_EL_SISTEMA);
+            throw new ExcepcionUsuario(EL_USUARIO_NO_EXISTE_EN_EL_SISTEMA);
         }
     }
 }

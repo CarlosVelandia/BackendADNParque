@@ -1,6 +1,7 @@
 package com.ceiba.usuario.servicio;
 
 import com.ceiba.dominio.excepcion.ExcepcionDuplicidad;
+import com.ceiba.usuario.excepcion.ExcepcionUsuario;
 import com.ceiba.usuario.modelo.entidad.Usuario;
 import com.ceiba.usuario.puerto.repositorio.RepositorioUsuario;
 
@@ -25,14 +26,14 @@ public class ServicioCrearUsuario {
     private void validarExistenciaUsuarioPreviaCedula(Usuario usuario) {
         boolean existe = this.repositorioUsuario.existeExcluyendoId(usuario.getId(), usuario.getCedula());
         if (existe) {
-            throw new ExcepcionDuplicidad(LA_CEDULA_YA_EXISTE);
+            throw new ExcepcionUsuario(LA_CEDULA_YA_EXISTE);
         }
     }
 
     private void validarExistenciaUsuarioId(Usuario usuario) {
         boolean existe = this.repositorioUsuario.existeId(usuario.getId());
         if (existe) {
-            throw new ExcepcionDuplicidad(EL_USUARIO_YA_EXISTE);
+            throw new ExcepcionUsuario(EL_USUARIO_YA_EXISTE);
         }
     }
 }

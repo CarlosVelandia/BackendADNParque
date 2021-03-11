@@ -7,12 +7,11 @@ public class ComandoUsuarioTestDataBuilder {
     private Long id;
     private String nombre;
     private String cedula;
-    ;
 
     public ComandoUsuarioTestDataBuilder() {
-        id = 0l;
-        nombre = "Carlos Velandia";
-        cedula = "1115081333";
+        this.id = 0l;
+        this.nombre = "Carlos Velandia";
+        this.cedula = "1115081333";
     }
 
     public ComandoUsuarioTestDataBuilder conId(Long id) {

@@ -1,6 +1,7 @@
 package com.ceiba.usuario.servicio;
 
 import com.ceiba.dominio.excepcion.ExcepcionDuplicidad;
+import com.ceiba.usuario.excepcion.ExcepcionUsuario;
 import com.ceiba.usuario.puerto.repositorio.RepositorioUsuario;
 
 public class ServicioEliminarUsuario {
@@ -21,7 +22,7 @@ public class ServicioEliminarUsuario {
     private void validarExistenciaPreviaUsuario(Long id) {
         boolean existe = this.repositorioUsuario.existeId(id);
         if (!existe) {
-            throw new ExcepcionDuplicidad(El_USUARIO_NO_EXISTE);
+            throw new ExcepcionUsuario(El_USUARIO_NO_EXISTE);
         }
     }
 }

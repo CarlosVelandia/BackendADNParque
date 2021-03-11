@@ -133,4 +133,18 @@ public class ServicioCrearParqueTest {
         //act - assert
         BasePrueba.assertThrows(()-> servicioCrearParque.ejecutar(parque), ExcepcionDuplicidad.class,EL_PARQUE_YA_EXISTE_EN_EL_SISTEMA );
     }
+
+    @Test
+    public void validarCreacionParqueTest() {
+        // arrange
+        Parque parque = new ParqueTestDataBuilder().conId(1l).build();
+        Mockito.when(repositorioParque.existe(parque.getNombre())).thenReturn(false);
+        Mockito.when(repositorioParque.existeCodigo(parque.getCodigo())).thenReturn(false);
+        Mockito.when(repositorioParque.existeId(parque.getId())).thenReturn(false);
+        Mockito.when(repositorioParque.crear(parque)).thenReturn(1l);
+        // act - assert
+        Long idParque = servicioCrearParque.ejecutar(parque);
+        // assert
+        BasePrueba.assertEqualsObject(parque.getId(), idParque);
+    }
 }
