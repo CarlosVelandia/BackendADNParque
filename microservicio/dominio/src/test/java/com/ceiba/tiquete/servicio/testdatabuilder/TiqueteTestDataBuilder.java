@@ -15,10 +15,11 @@ public class TiqueteTestDataBuilder {
         this.id = 0l;
         this.idUsuario = 1l;
         this.idParque = 1l;
-        this.fechaCompra="03-10-2021";
-        this.valor=15000;
+        this.fechaCompra = "03-10-2021";
+        this.valor = 15000;
 
     }
+
     public TiqueteTestDataBuilder conId(Long id) {
         this.id = id;
         return this;
@@ -45,6 +46,6 @@ public class TiqueteTestDataBuilder {
     }
 
     public Tiquete build() {
-        return new Tiquete(id, idUsuario,idParque,fechaCompra,valor);
+        return new Tiquete(id, idUsuario, idParque, fechaCompra, valor);
     }
 }

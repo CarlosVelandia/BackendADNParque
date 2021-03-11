@@ -29,7 +29,7 @@ public class Parque {
         validarObligatorio(direccion, SE_DEBE_INGRESAR_LA_DIRECCION);
         validarObligatorio(telefono, SE_DEBE_INGRESAR_EL_TELEFONO);
 
-        validarSoloLetras(nombre,EL_NOMBRE_DEBE_SER_TEXTO);
+        validarSoloLetras(nombre, EL_NOMBRE_DEBE_SER_TEXTO);
         validarNumerico(telefono, EL_TELEFONO_DEBE_SER_NUMERICO);
         validarPositivo(Double.parseDouble(telefono), EL_TELEFONO_DEBE_SER_POSITIVO);
         validarAlfanumerico(codigo, CODIGO_DEBE_SER_ALFANUMERICO);

@@ -2,17 +2,13 @@ package com.ceiba.tiquete.servicio;
 
 import com.ceiba.BasePrueba;
 import com.ceiba.dominio.excepcion.ExcepcionDuplicidad;
-import com.ceiba.dominio.excepcion.ExcepcionValorInvalido;
 import com.ceiba.dominio.excepcion.ExcepcionValorObligatorio;
 import com.ceiba.parque.puerto.respositorio.RepositorioParque;
 import com.ceiba.tiquete.excepcion.ExcepcionTiquete;
 import com.ceiba.tiquete.modelo.entidad.Tiquete;
 import com.ceiba.tiquete.puerto.repositorio.RepositorioTiquete;
 import com.ceiba.tiquete.servicio.testdatabuilder.TiqueteTestDataBuilder;
-import com.ceiba.usuario.modelo.entidad.Usuario;
 import com.ceiba.usuario.puerto.repositorio.RepositorioUsuario;
-import com.ceiba.usuario.servicio.ServicioCrearUsuario;
-import com.ceiba.usuario.servicio.testdatabuilder.UsuarioTestDataBuilder;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;

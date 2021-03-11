@@ -24,27 +24,27 @@ public class ServicioActualizarParqueTest {
     private ServicioActualizarParque servicioActualizarParque;
 
     @Before
-    public void init(){
+    public void init() {
         MockitoAnnotations.initMocks(this);
     }
 
     @Test
-    public void validarExistenciaPreviaCodigo(){
+    public void validarExistenciaPreviaCodigo() {
         //arrange
         Parque parque = new ParqueTestDataBuilder().conId(1l).conCodigo("637904").build();
         Mockito.when(repositorioParque.existeExcluyendoId(parque.getId(), parque.getNombre())).thenReturn(true);
         Mockito.when(repositorioParque.existeCodigo(parque.getCodigo())).thenReturn(false);
         //act - assert
-        BasePrueba.assertThrows(()-> servicioActualizarParque.ejecutar(parque), ExcepcionDuplicidad.class,EL_CODIGO_PARQUE_NO_EXISTE_EN_EL_SISTEMA);
+        BasePrueba.assertThrows(() -> servicioActualizarParque.ejecutar(parque), ExcepcionDuplicidad.class, EL_CODIGO_PARQUE_NO_EXISTE_EN_EL_SISTEMA);
     }
 
     @Test
-    public void validarExistenciaPreviaExcluyendoId(){
+    public void validarExistenciaPreviaExcluyendoId() {
         //arrange
         Parque parque = new ParqueTestDataBuilder().build();
         Mockito.when(repositorioParque.existeExcluyendoId(parque.getId(), parque.getCodigo())).thenReturn(false);
         //act - assert
-        BasePrueba.assertThrows(()-> servicioActualizarParque.ejecutar(parque),ExcepcionDuplicidad.class,EL_PARQUE_NO_EXISTE_EN_EL_SISTEMA );
+        BasePrueba.assertThrows(() -> servicioActualizarParque.ejecutar(parque), ExcepcionDuplicidad.class, EL_PARQUE_NO_EXISTE_EN_EL_SISTEMA);
     }
 
     @Test

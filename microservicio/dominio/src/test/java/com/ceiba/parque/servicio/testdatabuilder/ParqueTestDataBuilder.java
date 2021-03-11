@@ -45,6 +45,6 @@ public class ParqueTestDataBuilder {
     }
 
     public Parque build() {
-        return new Parque(id, nombre, codigo,direccion, telefono);
+        return new Parque(id, nombre, codigo, direccion, telefono);
     }
 }

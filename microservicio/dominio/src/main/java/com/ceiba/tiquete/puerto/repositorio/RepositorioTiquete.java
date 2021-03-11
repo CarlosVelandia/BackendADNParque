@@ -2,7 +2,6 @@ package com.ceiba.tiquete.puerto.repositorio;
 
 import com.ceiba.tiquete.modelo.entidad.Tiquete;
 
-
 import java.time.LocalDate;
 
 public interface RepositorioTiquete {

@@ -7,8 +7,6 @@ import com.ceiba.dominio.excepcion.ExcepcionValorObligatorio;
 import com.ceiba.parque.modelo.entidad.Parque;
 import com.ceiba.parque.puerto.respositorio.RepositorioParque;
 import com.ceiba.parque.servicio.testdatabuilder.ParqueTestDataBuilder;
-import com.ceiba.usuario.modelo.entidad.Usuario;
-import com.ceiba.usuario.servicio.testdatabuilder.UsuarioTestDataBuilder;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
@@ -29,8 +27,8 @@ public class ServicioCrearParqueTest {
 
 
     private static final String EL_PARQUE_YA_EXISTE_EN_EL_SISTEMA = "El parque ya existe en el sistema";
-    private static final String EL_NOMBRE_DEL_PARQUE_YA_EXISTE_EN_EL_SISTEMA= "El nombre del parque ya existe en el sistema";
-    private static final String EL_CODIGO_DEL_PARQUE_YA_EXISTE_EN_EL_SISTEMA= "El codigo del parque ya existe en el sistema";
+    private static final String EL_NOMBRE_DEL_PARQUE_YA_EXISTE_EN_EL_SISTEMA = "El nombre del parque ya existe en el sistema";
+    private static final String EL_CODIGO_DEL_PARQUE_YA_EXISTE_EN_EL_SISTEMA = "El codigo del parque ya existe en el sistema";
 
     @Mock
     private RepositorioParque repositorioParque;
@@ -39,12 +37,12 @@ public class ServicioCrearParqueTest {
     private ServicioCrearParque servicioCrearParque;
 
     @Before
-    public void init(){
+    public void init() {
         MockitoAnnotations.initMocks(this);
     }
 
     @Test
-    public void validarCodigoObligatorioTest(){
+    public void validarCodigoObligatorioTest() {
         // arrange
         ParqueTestDataBuilder parqueTestDataBuilder = new ParqueTestDataBuilder().conCodigo(null);
         // act - assert
@@ -52,7 +50,7 @@ public class ServicioCrearParqueTest {
     }
 
     @Test
-    public void validarNombreObligatorioTest(){
+    public void validarNombreObligatorioTest() {
         // arrange
         ParqueTestDataBuilder parqueTestDataBuilder = new ParqueTestDataBuilder().conNombre(null);
         // act - assert
@@ -60,7 +58,7 @@ public class ServicioCrearParqueTest {
     }
 
     @Test
-    public void validarDireccionObligatorioTest(){
+    public void validarDireccionObligatorioTest() {
         // arrange
         ParqueTestDataBuilder parqueTestDataBuilder = new ParqueTestDataBuilder().conDireccion(null);
         // act - assert
@@ -68,7 +66,7 @@ public class ServicioCrearParqueTest {
     }
 
     @Test
-    public void validarTelefonoObligatorioTest(){
+    public void validarTelefonoObligatorioTest() {
         // arrange
         ParqueTestDataBuilder parqueTestDataBuilder = new ParqueTestDataBuilder().conTelefono(null);
         // act - assert
@@ -108,30 +106,30 @@ public class ServicioCrearParqueTest {
     }
 
     @Test
-    public void validarExistenciaPreviaNombre(){
+    public void validarExistenciaPreviaNombre() {
         //arrange
         Parque parque = new ParqueTestDataBuilder().build();
         Mockito.when(repositorioParque.existe(parque.getNombre())).thenReturn(true);
         //act - assert
-        BasePrueba.assertThrows(()-> servicioCrearParque.ejecutar(parque), ExcepcionDuplicidad.class,EL_NOMBRE_DEL_PARQUE_YA_EXISTE_EN_EL_SISTEMA );
+        BasePrueba.assertThrows(() -> servicioCrearParque.ejecutar(parque), ExcepcionDuplicidad.class, EL_NOMBRE_DEL_PARQUE_YA_EXISTE_EN_EL_SISTEMA);
     }
 
     @Test
-    public void validarExistenciaPreviaCodigo(){
+    public void validarExistenciaPreviaCodigo() {
         //arrange
         Parque parque = new ParqueTestDataBuilder().build();
         Mockito.when(repositorioParque.existeCodigo(parque.getCodigo())).thenReturn(true);
         //act - assert
-        BasePrueba.assertThrows(()-> servicioCrearParque.ejecutar(parque), ExcepcionDuplicidad.class,EL_CODIGO_DEL_PARQUE_YA_EXISTE_EN_EL_SISTEMA );
+        BasePrueba.assertThrows(() -> servicioCrearParque.ejecutar(parque), ExcepcionDuplicidad.class, EL_CODIGO_DEL_PARQUE_YA_EXISTE_EN_EL_SISTEMA);
     }
 
     @Test
-    public void validarExistenciaPreviaId(){
+    public void validarExistenciaPreviaId() {
         //arrange
         Parque parque = new ParqueTestDataBuilder().build();
         Mockito.when(repositorioParque.existeId(parque.getId())).thenReturn(true);
         //act - assert
-        BasePrueba.assertThrows(()-> servicioCrearParque.ejecutar(parque), ExcepcionDuplicidad.class,EL_PARQUE_YA_EXISTE_EN_EL_SISTEMA );
+        BasePrueba.assertThrows(() -> servicioCrearParque.ejecutar(parque), ExcepcionDuplicidad.class, EL_PARQUE_YA_EXISTE_EN_EL_SISTEMA);
     }
 
     @Test

@@ -1,7 +1,6 @@
 package com.ceiba.usuario.servicio;
 
 import com.ceiba.BasePrueba;
-import com.ceiba.dominio.excepcion.ExcepcionDuplicidad;
 import com.ceiba.usuario.excepcion.ExcepcionUsuario;
 import com.ceiba.usuario.modelo.entidad.Usuario;
 import com.ceiba.usuario.puerto.repositorio.RepositorioUsuario;
@@ -15,7 +14,7 @@ import org.mockito.MockitoAnnotations;
 
 public class ServicioEliminarUsuarioTest {
 
-    private static final String El_USUARIO_NO_EXISTE="El usuario no existe en el sistema";
+    private static final String El_USUARIO_NO_EXISTE = "El usuario no existe en el sistema";
 
     @Mock
     private RepositorioUsuario repositorioUsuario;

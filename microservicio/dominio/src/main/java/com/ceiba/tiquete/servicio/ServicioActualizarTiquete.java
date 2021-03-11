@@ -22,7 +22,7 @@ public class ServicioActualizarTiquete {
         this.repositorioTiquete = repositorioTiquete;
         this.repositorioUsuario = repositorioUsuario;
         this.repositorioParque = repositorioParque;
-        this.validadorTiquete=new ValidadorTiquete(this.repositorioTiquete,this.repositorioUsuario,this.repositorioParque);
+        this.validadorTiquete = new ValidadorTiquete(this.repositorioTiquete, this.repositorioUsuario, this.repositorioParque);
 
     }
 
@@ -43,6 +43,7 @@ public class ServicioActualizarTiquete {
             throw new ExcepcionDuplicidad(EL_TIQUETE_NO_EXISTE);
         }
     }
+
     private void validarExistenciaUsuario(Tiquete tiquete) {
         boolean existe = this.repositorioUsuario.existeId(tiquete.getIdUsuario());
         if (!existe) {

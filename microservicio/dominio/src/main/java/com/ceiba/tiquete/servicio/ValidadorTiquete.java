@@ -20,7 +20,6 @@ public class ValidadorTiquete {
     private static final double VALOR_TIQUETE_FIN_DE_SEMANA = 30000;
 
 
-
     private final RepositorioTiquete repositorioTiquete;
     private final RepositorioParque repositorioParque;
     private final RepositorioUsuario repositorioUsuario;
@@ -36,24 +35,25 @@ public class ValidadorTiquete {
             throw new ExcepcionTiquete(LUNES_NO_SE_VENDEN_TIQUETES);
         }
     }
+
     public void validarFinDeSemana(Tiquete tiquete) {
         if (tiquete.getFechaCompra().getDayOfWeek() == DayOfWeek.FRIDAY) {
             tiquete.setValor(VALOR_TIQUETE_FIN_DE_SEMANA);
-        }else {
-            if (tiquete.getFechaCompra().getDayOfWeek()== DayOfWeek.SATURDAY) {
+        } else {
+            if (tiquete.getFechaCompra().getDayOfWeek() == DayOfWeek.SATURDAY) {
                 tiquete.setValor(VALOR_TIQUETE_FIN_DE_SEMANA);
-            }else {
-                if (tiquete.getFechaCompra().getDayOfWeek()== DayOfWeek.SUNDAY) {
+            } else {
+                if (tiquete.getFechaCompra().getDayOfWeek() == DayOfWeek.SUNDAY) {
                     tiquete.setValor(VALOR_TIQUETE_FIN_DE_SEMANA);
-                }else{
+                } else {
                     tiquete.setValor(VALOR_TIQUETE_SEMANA);
                 }
             }
         }
     }
 
-        public void maximoTiquetesParque(Tiquete tiquete){
-        int tiquetesParque= this.repositorioTiquete.maximoTiquetesVendidos(tiquete.getFechaCompra(), tiquete.getIdParque());
+    public void maximoTiquetesParque(Tiquete tiquete) {
+        int tiquetesParque = this.repositorioTiquete.maximoTiquetesVendidos(tiquete.getFechaCompra(), tiquete.getIdParque());
         if (tiquetesParque >= MAXIMO_TIQUETES_POR_PARQUE) {
             throw new ExcepcionTiquete(LIMITE_TIQUETES_POR_PARQUE_ALCANZADO);
         }

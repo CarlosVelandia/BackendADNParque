@@ -1,7 +1,6 @@
 package com.ceiba.usuario.servicio;
 
 import com.ceiba.BasePrueba;
-import com.ceiba.dominio.excepcion.ExcepcionDuplicidad;
 import com.ceiba.dominio.excepcion.ExcepcionValorInvalido;
 import com.ceiba.dominio.excepcion.ExcepcionValorObligatorio;
 import com.ceiba.usuario.excepcion.ExcepcionUsuario;
@@ -21,7 +20,7 @@ public class ServicioCrearUsuarioTest {
     private static final String SE_DEBE_INGRESAR_EL_NOMBRE_DE_USUARIO = "Se debe ingresar el nombre de usuario";
     private static final String LA_CEDULA_DEBE_SER_NUMERICA = "La Cedula debe ser numerica, no debe contener simbolos, ni espacios";
     private static final String LA_CEDULA_DEBE_SER_POSITIVA = "La Cedula debe ser numerica positiva";
-    private static final String EL_USUARIO_YA_EXISTE="EL usuario ya existe en el sistema";
+    private static final String EL_USUARIO_YA_EXISTE = "EL usuario ya existe en el sistema";
     private static final String LA_CEDULA_YA_EXISTE = "El usuario ya existe en el sistema con la cedula";
     private static final String EL_NOMBRE_DEBE_SER_TEXTO = "El nombre solo puede contener letas, sin numeros ni simbolos";
 
@@ -78,21 +77,21 @@ public class ServicioCrearUsuarioTest {
     }
 
     @Test
-    public void validarExistenciaPreviaExcluyendoId(){
+    public void validarExistenciaPreviaExcluyendoId() {
         //arrange
         Usuario usuario = new UsuarioTestDataBuilder().build();
         Mockito.when(repositorioUsuario.existeExcluyendoId(usuario.getId(), usuario.getCedula())).thenReturn(true);
         //act - assert
-        BasePrueba.assertThrows(()-> servicioCrearUsuario.ejecutar(usuario),ExcepcionUsuario.class,LA_CEDULA_YA_EXISTE );
+        BasePrueba.assertThrows(() -> servicioCrearUsuario.ejecutar(usuario), ExcepcionUsuario.class, LA_CEDULA_YA_EXISTE);
     }
 
     @Test
-    public void validarExistenciaPreviaId(){
+    public void validarExistenciaPreviaId() {
         //arrange
         Usuario usuario = new UsuarioTestDataBuilder().build();
         Mockito.when(repositorioUsuario.existeId(usuario.getId())).thenReturn(true);
         //act - assert
-        BasePrueba.assertThrows(()-> servicioCrearUsuario.ejecutar(usuario), ExcepcionUsuario.class,EL_USUARIO_YA_EXISTE );
+        BasePrueba.assertThrows(() -> servicioCrearUsuario.ejecutar(usuario), ExcepcionUsuario.class, EL_USUARIO_YA_EXISTE);
     }
 
     @Test

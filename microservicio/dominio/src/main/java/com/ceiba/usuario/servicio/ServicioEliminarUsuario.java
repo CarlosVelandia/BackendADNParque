@@ -1,12 +1,11 @@
 package com.ceiba.usuario.servicio;
 
-import com.ceiba.dominio.excepcion.ExcepcionDuplicidad;
 import com.ceiba.usuario.excepcion.ExcepcionUsuario;
 import com.ceiba.usuario.puerto.repositorio.RepositorioUsuario;
 
 public class ServicioEliminarUsuario {
 
-    private static final String El_USUARIO_NO_EXISTE="El usuario no existe en el sistema";
+    private static final String El_USUARIO_NO_EXISTE = "El usuario no existe en el sistema";
 
     private final RepositorioUsuario repositorioUsuario;
 

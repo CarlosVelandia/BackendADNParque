@@ -14,7 +14,7 @@ import org.mockito.MockitoAnnotations;
 
 public class ServicioEliminarParqueTest {
 
-    private static final String El_PARQUE_NO_EXISTE="El parque no existe en el sistema";
+    private static final String El_PARQUE_NO_EXISTE = "El parque no existe en el sistema";
 
     @Mock
     private RepositorioParque repositorioParque;

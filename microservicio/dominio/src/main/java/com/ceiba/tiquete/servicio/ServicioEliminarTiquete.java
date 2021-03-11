@@ -5,7 +5,7 @@ import com.ceiba.tiquete.puerto.repositorio.RepositorioTiquete;
 
 public class ServicioEliminarTiquete {
 
-    private static final String EL_TIQUETE_NO_EXISTE="El tiquete no existe en el sistema";
+    private static final String EL_TIQUETE_NO_EXISTE = "El tiquete no existe en el sistema";
 
     private final RepositorioTiquete repositorioTiquete;
 

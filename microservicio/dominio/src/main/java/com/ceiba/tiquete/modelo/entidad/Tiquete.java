@@ -6,7 +6,8 @@ import lombok.Setter;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-import static com.ceiba.dominio.ValidadorArgumento.*;
+import static com.ceiba.dominio.ValidadorArgumento.validarNumerico;
+import static com.ceiba.dominio.ValidadorArgumento.validarObligatorio;
 
 
 @Getter

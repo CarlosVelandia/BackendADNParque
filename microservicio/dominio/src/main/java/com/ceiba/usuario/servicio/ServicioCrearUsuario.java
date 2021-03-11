@@ -1,6 +1,5 @@
 package com.ceiba.usuario.servicio;
 
-import com.ceiba.dominio.excepcion.ExcepcionDuplicidad;
 import com.ceiba.usuario.excepcion.ExcepcionUsuario;
 import com.ceiba.usuario.modelo.entidad.Usuario;
 import com.ceiba.usuario.puerto.repositorio.RepositorioUsuario;
@@ -9,7 +8,7 @@ import com.ceiba.usuario.puerto.repositorio.RepositorioUsuario;
 public class ServicioCrearUsuario {
 
     private static final String LA_CEDULA_YA_EXISTE = "El usuario ya existe en el sistema con la cedula";
-    private static final String EL_USUARIO_YA_EXISTE="EL usuario ya existe en el sistema";
+    private static final String EL_USUARIO_YA_EXISTE = "EL usuario ya existe en el sistema";
 
     private final RepositorioUsuario repositorioUsuario;
 
