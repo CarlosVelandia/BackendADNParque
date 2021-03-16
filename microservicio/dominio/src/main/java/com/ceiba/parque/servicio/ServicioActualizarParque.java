@@ -17,12 +17,12 @@ public class ServicioActualizarParque {
 
     public void ejecutar(Parque parque) {
         validarExistenciaPreviaParque(parque);
-        validarExistenciaPreviaCodigo(parque);
+        //validarExistenciaPreviaCodigo(parque);
         this.repositorioParque.actualizar(parque);
     }
 
     private void validarExistenciaPreviaParque(Parque parque) {
-        boolean existe = this.repositorioParque.existeExcluyendoId(parque.getId(), parque.getNombre());
+        boolean existe = this.repositorioParque.existeId(parque.getId());
         if (!existe) {
             throw new ExcepcionDuplicidad(EL_PARQUE_NO_EXISTE_EN_EL_SISTEMA);
         }

@@ -10,6 +10,7 @@ select tiquete.id,
        parque.direccion,
        parque.telefono
 from tiquete
-         inner join usuario on tiquete.id_usuario = usuario.id
-         inner join parque on tiquete.id_parque = parque.id
+inner join usuario on tiquete.id_usuario = usuario.id
+inner join parque on tiquete.id_parque = parque.id
+order by tiquete.fecha_compra desc
 
