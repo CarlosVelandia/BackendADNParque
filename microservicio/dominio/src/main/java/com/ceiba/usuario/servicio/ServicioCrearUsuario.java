@@ -23,7 +23,7 @@ public class ServicioCrearUsuario {
     }
 
     private void validarExistenciaUsuarioPreviaCedula(Usuario usuario) {
-        boolean existe = this.repositorioUsuario.existeExcluyendoId(usuario.getId(), usuario.getCedula());
+        boolean existe = this.repositorioUsuario.existeCedula(usuario.getCedula());
         if (existe) {
             throw new ExcepcionUsuario(LA_CEDULA_YA_EXISTE);
         }

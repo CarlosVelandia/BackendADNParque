@@ -2,6 +2,7 @@ package com.ceiba.tiquete.servicio;
 
 import com.ceiba.BasePrueba;
 import com.ceiba.dominio.excepcion.ExcepcionDuplicidad;
+import com.ceiba.tiquete.excepcion.ExcepcionTiquete;
 import com.ceiba.tiquete.modelo.entidad.Tiquete;
 import com.ceiba.tiquete.puerto.repositorio.RepositorioTiquete;
 import com.ceiba.tiquete.servicio.testdatabuilder.TiqueteTestDataBuilder;
@@ -33,7 +34,7 @@ public class ServicioEliminarTiqueteTest {
         Tiquete tiquete = new TiqueteTestDataBuilder().build();
         Mockito.when(repositorioTiquete.existeId(tiquete.getId())).thenReturn(false);
         //act - assert
-        BasePrueba.assertThrows(() -> servicioEliminarTiquete.ejecutar(tiquete.getId()), ExcepcionDuplicidad.class, EL_TIQUETE_NO_EXISTE);
+        BasePrueba.assertThrows(() -> servicioEliminarTiquete.ejecutar(tiquete.getId()), ExcepcionTiquete.class, EL_TIQUETE_NO_EXISTE);
     }
 
     @Test

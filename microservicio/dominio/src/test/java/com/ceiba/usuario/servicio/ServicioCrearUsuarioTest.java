@@ -80,7 +80,7 @@ public class ServicioCrearUsuarioTest {
     public void validarExistenciaPreviaExcluyendoId() {
         //arrange
         Usuario usuario = new UsuarioTestDataBuilder().build();
-        Mockito.when(repositorioUsuario.existeExcluyendoId(usuario.getId(), usuario.getCedula())).thenReturn(true);
+        Mockito.when(repositorioUsuario.existeCedula(usuario.getCedula())).thenReturn(true);
         //act - assert
         BasePrueba.assertThrows(() -> servicioCrearUsuario.ejecutar(usuario), ExcepcionUsuario.class, LA_CEDULA_YA_EXISTE);
     }

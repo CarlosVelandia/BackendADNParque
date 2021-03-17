@@ -1,6 +1,7 @@
 package com.ceiba.parque.servicio;
 
 import com.ceiba.dominio.excepcion.ExcepcionDuplicidad;
+import com.ceiba.parque.excepcion.ExcepcionParque;
 import com.ceiba.parque.modelo.entidad.Parque;
 import com.ceiba.parque.puerto.respositorio.RepositorioParque;
 
@@ -17,21 +18,21 @@ public class ServicioActualizarParque {
 
     public void ejecutar(Parque parque) {
         validarExistenciaPreviaParque(parque);
-        //validarExistenciaPreviaCodigo(parque);
+        validarExistenciaPreviaCodigo(parque);
         this.repositorioParque.actualizar(parque);
     }
 
     private void validarExistenciaPreviaParque(Parque parque) {
         boolean existe = this.repositorioParque.existeId(parque.getId());
         if (!existe) {
-            throw new ExcepcionDuplicidad(EL_PARQUE_NO_EXISTE_EN_EL_SISTEMA);
+            throw new ExcepcionParque(EL_PARQUE_NO_EXISTE_EN_EL_SISTEMA);
         }
     }
 
     private void validarExistenciaPreviaCodigo(Parque parque) {
         boolean existe = this.repositorioParque.existeCodigo(parque.getCodigo());
-        if (!existe) {
-            throw new ExcepcionDuplicidad(EL_CODIGO_PARQUE_NO_EXISTE_EN_EL_SISTEMA);
+        if (existe) {
+            throw new ExcepcionParque(EL_CODIGO_PARQUE_NO_EXISTE_EN_EL_SISTEMA);
         }
     }
 }

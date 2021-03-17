@@ -1,7 +1,7 @@
 package com.ceiba.tiquete.servicio;
 
-import com.ceiba.dominio.excepcion.ExcepcionDuplicidad;
 import com.ceiba.parque.puerto.respositorio.RepositorioParque;
+import com.ceiba.tiquete.excepcion.ExcepcionTiquete;
 import com.ceiba.tiquete.modelo.entidad.Tiquete;
 import com.ceiba.tiquete.puerto.repositorio.RepositorioTiquete;
 import com.ceiba.usuario.puerto.repositorio.RepositorioUsuario;
@@ -38,14 +38,14 @@ public class ServicioCrearTiquete {
     private void validarExistenciaUsuario(Tiquete tiquete) {
         boolean existe = this.repositorioUsuario.existeId(tiquete.getIdUsuario());
         if (!existe) {
-            throw new ExcepcionDuplicidad(EL_USUARIO_NO_EXISTE);
+            throw new ExcepcionTiquete(EL_USUARIO_NO_EXISTE);
         }
     }
 
     private void validarExistenciaParque(Tiquete tiquete) {
         boolean existe = this.repositorioParque.existeId(tiquete.getIdParque());
         if (!existe) {
-            throw new ExcepcionDuplicidad(EL_PARQUE_NO_EXISTE);
+            throw new ExcepcionTiquete(EL_PARQUE_NO_EXISTE);
         }
     }
 }

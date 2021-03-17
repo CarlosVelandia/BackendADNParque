@@ -82,7 +82,7 @@ public class ServicioCrearTiqueteTest {
         Tiquete tiquete = new TiqueteTestDataBuilder().build();
         Mockito.when(repositorioUsuario.existeId(tiquete.getIdUsuario())).thenReturn(false);
         // act - assert
-        BasePrueba.assertThrows(() -> servicioCrearTiquete.ejecutar(tiquete), ExcepcionDuplicidad.class, EL_USUARIO_NO_EXISTE);
+        BasePrueba.assertThrows(() -> servicioCrearTiquete.ejecutar(tiquete), ExcepcionTiquete.class, EL_USUARIO_NO_EXISTE);
     }
 
     @Test
@@ -92,7 +92,7 @@ public class ServicioCrearTiqueteTest {
         Mockito.when(repositorioUsuario.existeId(tiquete.getIdUsuario())).thenReturn(true);
         Mockito.when(repositorioParque.existeId(tiquete.getIdParque())).thenReturn(false);
         // act - assert
-        BasePrueba.assertThrows(() -> servicioCrearTiquete.ejecutar(tiquete), ExcepcionDuplicidad.class, EL_PARQUE_NO_EXISTE);
+        BasePrueba.assertThrows(() -> servicioCrearTiquete.ejecutar(tiquete), ExcepcionTiquete.class, EL_PARQUE_NO_EXISTE);
     }
 
     @Test

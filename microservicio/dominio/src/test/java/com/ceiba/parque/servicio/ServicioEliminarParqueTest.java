@@ -2,6 +2,7 @@ package com.ceiba.parque.servicio;
 
 import com.ceiba.BasePrueba;
 import com.ceiba.dominio.excepcion.ExcepcionDuplicidad;
+import com.ceiba.parque.excepcion.ExcepcionParque;
 import com.ceiba.parque.modelo.entidad.Parque;
 import com.ceiba.parque.puerto.respositorio.RepositorioParque;
 import com.ceiba.parque.servicio.testdatabuilder.ParqueTestDataBuilder;
@@ -33,7 +34,7 @@ public class ServicioEliminarParqueTest {
         Parque parque = new ParqueTestDataBuilder().build();
         Mockito.when(repositorioParque.existeId(parque.getId())).thenReturn(false);
         //act - assert
-        BasePrueba.assertThrows(() -> servicioEliminarParque.ejecutar(parque.getId()), ExcepcionDuplicidad.class, El_PARQUE_NO_EXISTE);
+        BasePrueba.assertThrows(() -> servicioEliminarParque.ejecutar(parque.getId()), ExcepcionParque.class, El_PARQUE_NO_EXISTE);
     }
 
     @Test

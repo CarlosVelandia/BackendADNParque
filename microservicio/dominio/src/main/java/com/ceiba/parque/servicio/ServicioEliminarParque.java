@@ -1,6 +1,6 @@
 package com.ceiba.parque.servicio;
 
-import com.ceiba.dominio.excepcion.ExcepcionDuplicidad;
+import com.ceiba.parque.excepcion.ExcepcionParque;
 import com.ceiba.parque.puerto.respositorio.RepositorioParque;
 
 public class ServicioEliminarParque {
@@ -21,7 +21,7 @@ public class ServicioEliminarParque {
     private void validarExistenciaPreviaParque(Long id) {
         boolean existe = this.repositorioParque.existeId(id);
         if (!existe) {
-            throw new ExcepcionDuplicidad(El_PARQUE_NO_EXISTE);
+            throw new ExcepcionParque(El_PARQUE_NO_EXISTE);
         }
     }
 }

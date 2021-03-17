@@ -4,6 +4,7 @@ import com.ceiba.BasePrueba;
 import com.ceiba.dominio.excepcion.ExcepcionDuplicidad;
 import com.ceiba.dominio.excepcion.ExcepcionValorInvalido;
 import com.ceiba.dominio.excepcion.ExcepcionValorObligatorio;
+import com.ceiba.parque.excepcion.ExcepcionParque;
 import com.ceiba.parque.modelo.entidad.Parque;
 import com.ceiba.parque.puerto.respositorio.RepositorioParque;
 import com.ceiba.parque.servicio.testdatabuilder.ParqueTestDataBuilder;
@@ -111,7 +112,7 @@ public class ServicioCrearParqueTest {
         Parque parque = new ParqueTestDataBuilder().build();
         Mockito.when(repositorioParque.existe(parque.getNombre())).thenReturn(true);
         //act - assert
-        BasePrueba.assertThrows(() -> servicioCrearParque.ejecutar(parque), ExcepcionDuplicidad.class, EL_NOMBRE_DEL_PARQUE_YA_EXISTE_EN_EL_SISTEMA);
+        BasePrueba.assertThrows(() -> servicioCrearParque.ejecutar(parque), ExcepcionParque.class, EL_NOMBRE_DEL_PARQUE_YA_EXISTE_EN_EL_SISTEMA);
     }
 
     @Test
@@ -120,7 +121,7 @@ public class ServicioCrearParqueTest {
         Parque parque = new ParqueTestDataBuilder().build();
         Mockito.when(repositorioParque.existeCodigo(parque.getCodigo())).thenReturn(true);
         //act - assert
-        BasePrueba.assertThrows(() -> servicioCrearParque.ejecutar(parque), ExcepcionDuplicidad.class, EL_CODIGO_DEL_PARQUE_YA_EXISTE_EN_EL_SISTEMA);
+        BasePrueba.assertThrows(() -> servicioCrearParque.ejecutar(parque), ExcepcionParque.class, EL_CODIGO_DEL_PARQUE_YA_EXISTE_EN_EL_SISTEMA);
     }
 
     @Test
@@ -129,7 +130,7 @@ public class ServicioCrearParqueTest {
         Parque parque = new ParqueTestDataBuilder().build();
         Mockito.when(repositorioParque.existeId(parque.getId())).thenReturn(true);
         //act - assert
-        BasePrueba.assertThrows(() -> servicioCrearParque.ejecutar(parque), ExcepcionDuplicidad.class, EL_PARQUE_YA_EXISTE_EN_EL_SISTEMA);
+        BasePrueba.assertThrows(() -> servicioCrearParque.ejecutar(parque), ExcepcionParque.class, EL_PARQUE_YA_EXISTE_EN_EL_SISTEMA);
     }
 
     @Test

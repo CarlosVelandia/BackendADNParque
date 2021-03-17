@@ -41,4 +41,12 @@ public interface RepositorioUsuario {
      */
     boolean existeId(Long id);
 
+    /**
+     * Permite validar si existe un usuario con un id
+     *
+     * @param cedula
+     * @return si existe o no
+     */
+    boolean existeCedula(String cedula);
+
 }

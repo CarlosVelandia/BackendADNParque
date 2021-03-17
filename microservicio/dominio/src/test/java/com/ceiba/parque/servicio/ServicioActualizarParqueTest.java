@@ -2,6 +2,7 @@ package com.ceiba.parque.servicio;
 
 import com.ceiba.BasePrueba;
 import com.ceiba.dominio.excepcion.ExcepcionDuplicidad;
+import com.ceiba.parque.excepcion.ExcepcionParque;
 import com.ceiba.parque.modelo.entidad.Parque;
 import com.ceiba.parque.puerto.respositorio.RepositorioParque;
 import com.ceiba.parque.servicio.testdatabuilder.ParqueTestDataBuilder;
@@ -32,10 +33,10 @@ public class ServicioActualizarParqueTest {
     public void validarExistenciaPreviaCodigo() {
         //arrange
         Parque parque = new ParqueTestDataBuilder().conId(1l).conCodigo("637904").build();
-        Mockito.when(repositorioParque.existeExcluyendoId(parque.getId(), parque.getNombre())).thenReturn(true);
-        Mockito.when(repositorioParque.existeCodigo(parque.getCodigo())).thenReturn(false);
+        Mockito.when(repositorioParque.existeId(parque.getId())).thenReturn(true);
+        Mockito.when(repositorioParque.existeCodigo(parque.getCodigo())).thenReturn(true);
         //act - assert
-        BasePrueba.assertThrows(() -> servicioActualizarParque.ejecutar(parque), ExcepcionDuplicidad.class, EL_CODIGO_PARQUE_NO_EXISTE_EN_EL_SISTEMA);
+        BasePrueba.assertThrows(() -> servicioActualizarParque.ejecutar(parque), ExcepcionParque.class, EL_CODIGO_PARQUE_NO_EXISTE_EN_EL_SISTEMA);
     }
 
     @Test
@@ -44,15 +45,15 @@ public class ServicioActualizarParqueTest {
         Parque parque = new ParqueTestDataBuilder().build();
         Mockito.when(repositorioParque.existeExcluyendoId(parque.getId(), parque.getCodigo())).thenReturn(false);
         //act - assert
-        BasePrueba.assertThrows(() -> servicioActualizarParque.ejecutar(parque), ExcepcionDuplicidad.class, EL_PARQUE_NO_EXISTE_EN_EL_SISTEMA);
+        BasePrueba.assertThrows(() -> servicioActualizarParque.ejecutar(parque), ExcepcionParque.class, EL_PARQUE_NO_EXISTE_EN_EL_SISTEMA);
     }
 
     @Test
     public void validarActualizarParqueTest() {
         // arrange
         Parque parque = new ParqueTestDataBuilder().conId(1l).build();
-        Mockito.when(repositorioParque.existeExcluyendoId(parque.getId(), parque.getNombre())).thenReturn(true);
-        Mockito.when(repositorioParque.existeCodigo(parque.getCodigo())).thenReturn(true);
+        Mockito.when(repositorioParque.existeId(parque.getId())).thenReturn(true);
+        Mockito.when(repositorioParque.existeCodigo(parque.getCodigo())).thenReturn(false);
         // act - assert
         servicioActualizarParque.ejecutar(parque);
         // assert

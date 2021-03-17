@@ -1,6 +1,6 @@
 package com.ceiba.tiquete.servicio;
 
-import com.ceiba.dominio.excepcion.ExcepcionDuplicidad;
+import com.ceiba.tiquete.excepcion.ExcepcionTiquete;
 import com.ceiba.tiquete.puerto.repositorio.RepositorioTiquete;
 
 public class ServicioEliminarTiquete {
@@ -21,7 +21,7 @@ public class ServicioEliminarTiquete {
     private void validarExistenciaPreviaTiquete(Long id) {
         boolean existe = this.repositorioTiquete.existeId(id);
         if (!existe) {
-            throw new ExcepcionDuplicidad(EL_TIQUETE_NO_EXISTE);
+            throw new ExcepcionTiquete(EL_TIQUETE_NO_EXISTE);
         }
     }
 }
