@@ -1,6 +1,5 @@
 package com.ceiba.parque.servicio;
 
-import com.ceiba.dominio.excepcion.ExcepcionDuplicidad;
 import com.ceiba.parque.excepcion.ExcepcionParque;
 import com.ceiba.parque.modelo.entidad.Parque;
 import com.ceiba.parque.puerto.respositorio.RepositorioParque;

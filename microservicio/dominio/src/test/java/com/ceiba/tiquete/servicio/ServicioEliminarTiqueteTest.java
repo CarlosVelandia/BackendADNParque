@@ -1,7 +1,6 @@
 package com.ceiba.tiquete.servicio;
 
 import com.ceiba.BasePrueba;
-import com.ceiba.dominio.excepcion.ExcepcionDuplicidad;
 import com.ceiba.tiquete.excepcion.ExcepcionTiquete;
 import com.ceiba.tiquete.modelo.entidad.Tiquete;
 import com.ceiba.tiquete.puerto.repositorio.RepositorioTiquete;
