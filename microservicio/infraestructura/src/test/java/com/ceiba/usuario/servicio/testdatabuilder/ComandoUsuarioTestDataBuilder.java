@@ -10,8 +10,8 @@ public class ComandoUsuarioTestDataBuilder {
 
     public ComandoUsuarioTestDataBuilder() {
         this.id = 0l;
-        this.nombre = "Carlos Velandia";
-        this.cedula = "1115081333";
+        this.nombre = "test";
+        this.cedula = "123456";
     }
 
     public ComandoUsuarioTestDataBuilder conId(Long id) {

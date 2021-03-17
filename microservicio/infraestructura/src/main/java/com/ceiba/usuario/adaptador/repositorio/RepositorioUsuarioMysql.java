@@ -28,7 +28,7 @@ public class RepositorioUsuarioMysql implements RepositorioUsuario {
     @SqlStatement(namespace = "usuario", value = "existeId")
     private static String sqlExisteId;
 
-    @SqlStatement(namespace = "usuario", value = "existeExcluyendoId")
+    @SqlStatement(namespace = "usuario", value = "existeCedula")
     private static String sqlExisteCedula;
 
     @SqlStatement(namespace = "usuario", value = "existeExcluyendoId")

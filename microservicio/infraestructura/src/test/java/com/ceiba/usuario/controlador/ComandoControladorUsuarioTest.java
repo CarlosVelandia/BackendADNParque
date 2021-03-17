@@ -45,15 +45,14 @@ public class ComandoControladorUsuarioTest {
                 .content(objectMapper.writeValueAsString(usuario)))
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(content().json("{'valor': 2}"));
+                .andExpect(content().json("{'valor': 4 }"));
     }
 
     @Test
     public void actualizar() throws Exception {
         // arrange
-        Long id = 1L;
+        Long id = 3L;
         ComandoUsuario usuario = new ComandoUsuarioTestDataBuilder()
-                .conId(1l)
                 .conNombre(NOMBRE_USUARIO_ACTUALIZAR)
                 .conCedula(CEDULA_USUARIO_ACTUALIZAR)
                 .build();
@@ -68,7 +67,7 @@ public class ComandoControladorUsuarioTest {
     @Test
     public void eliminar() throws Exception {
         // arrange
-        Long id = 1L;
+        Long id = 2L;
 
         // act - assert
         mocMvc.perform(delete("/usuarios/{id}", id)
