@@ -5,7 +5,7 @@ import com.ceiba.parque.puerto.respositorio.RepositorioParque;
 
 public class ServicioEliminarParque {
 
-    private static final String El_PARQUE_NO_EXISTE = "El parque no existe en el sistema";
+    private static final String EL_PARQUE_NO_EXISTE = "El parque no existe en el sistema";
 
     private final RepositorioParque repositorioParque;
 
@@ -21,7 +21,7 @@ public class ServicioEliminarParque {
     private void validarExistenciaPreviaParque(Long id) {
         boolean existe = this.repositorioParque.existeId(id);
         if (!existe) {
-            throw new ExcepcionParque(El_PARQUE_NO_EXISTE);
+            throw new ExcepcionParque(EL_PARQUE_NO_EXISTE);
         }
     }
 }

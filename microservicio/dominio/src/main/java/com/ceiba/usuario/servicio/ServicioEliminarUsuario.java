@@ -5,7 +5,7 @@ import com.ceiba.usuario.puerto.repositorio.RepositorioUsuario;
 
 public class ServicioEliminarUsuario {
 
-    private static final String El_USUARIO_NO_EXISTE = "El usuario no existe en el sistema";
+    private static final String EL_USUARIO_NO_EXISTE = "El usuario no existe en el sistema";
 
     private final RepositorioUsuario repositorioUsuario;
 
@@ -21,7 +21,7 @@ public class ServicioEliminarUsuario {
     private void validarExistenciaPreviaUsuario(Long id) {
         boolean existe = this.repositorioUsuario.existeId(id);
         if (!existe) {
-            throw new ExcepcionUsuario(El_USUARIO_NO_EXISTE);
+            throw new ExcepcionUsuario(EL_USUARIO_NO_EXISTE);
         }
     }
 }
