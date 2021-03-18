@@ -2,13 +2,11 @@ package com.ceiba.tiquete.servicio;
 
 import com.ceiba.BasePrueba;
 import com.ceiba.parque.puerto.respositorio.RepositorioParque;
-import com.ceiba.parque.servicio.ServicioActualizarParque;
 import com.ceiba.tiquete.excepcion.ExcepcionTiquete;
 import com.ceiba.tiquete.modelo.entidad.Tiquete;
 import com.ceiba.tiquete.puerto.repositorio.RepositorioTiquete;
 import com.ceiba.tiquete.servicio.testdatabuilder.TiqueteTestDataBuilder;
 import com.ceiba.usuario.puerto.repositorio.RepositorioUsuario;
-import com.ceiba.usuario.servicio.ServicioActualizarUsuario;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
@@ -33,9 +31,6 @@ public class ServicioActualizarTiqueteTest {
     private static final String FECHA_DIA_NORMAL = "10-03-2021";
 
 
-
-
-
     @Mock
     private RepositorioTiquete repositorioTiquete;
 
@@ -45,15 +40,9 @@ public class ServicioActualizarTiqueteTest {
     @Mock
     private RepositorioParque repositorioParque;
 
-    @InjectMocks
-    private ServicioActualizarUsuario servicioActualizarUsuario;
 
     @InjectMocks
     private ServicioActualizarTiquete servicioActualizarTiquete;
-
-    @InjectMocks
-    private ServicioActualizarParque servicioActualizarParque;
-
 
     @Before
     public void init() {

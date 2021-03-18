@@ -6,7 +6,6 @@ import com.ceiba.tiquete.modelo.entidad.Tiquete;
 import com.ceiba.tiquete.puerto.repositorio.RepositorioTiquete;
 import com.ceiba.usuario.puerto.repositorio.RepositorioUsuario;
 
-import java.time.DayOfWeek;
 
 public class ServicioActualizarTiquete {
 
