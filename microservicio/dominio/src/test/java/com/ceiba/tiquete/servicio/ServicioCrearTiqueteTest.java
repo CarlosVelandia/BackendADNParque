@@ -75,6 +75,7 @@ public class ServicioCrearTiqueteTest {
         BasePrueba.assertThrows(() -> tiqueteTestDataBuilder.build(), ExcepcionValorObligatorio.class, SE_DEBE_INGRESAR_LA_FECHA_DE_COMPRA);
     }
 
+
     @Test
     public void validarExcepcionExistenciaUsuarioTest() {
         // arrange
@@ -127,19 +128,7 @@ public class ServicioCrearTiqueteTest {
         BasePrueba.assertThrows(() -> servicioCrearTiquete.ejecutar(tiquete), ExcepcionTiquete.class, LIMITE_TIQUETES_POR_PARQUE_ALCANZADO);
     }
 
-    /*
-        @Test
-        public void validarFinDeSemanaTest() {
-            // arrange
-            Tiquete tiquete = new TiqueteTestDataBuilder().conFechaCompra(FECHA_FIN_DE_SEMANA).build();
-            Mockito.when(repositorioUsuario.existeId(tiquete.getIdUsuario())).thenReturn(true);
-            Mockito.when(repositorioParque.existeId(tiquete.getIdParque())).thenReturn(true);
-            Mockito.when(repositorioTiquete.existeTiqueteFechaYCedula(tiquete.getFechaCompra(), tiquete.getIdUsuario())).thenReturn(TIQUETES_PERMITIDOS_POR_PERSONA);
-            Mockito.when(repositorioTiquete.maximoTiquetesVendidos(tiquete.getFechaCompra(), tiquete.getIdParque())).thenReturn(TIQUETES_PERMITIDOS_POR_PARQUE);
-            // act - assert
-            BasePrueba.assertThrows(() -> servicioCrearTiquete.ejecutar(tiquete), ExcepcionTiquete.class, LIMITE_TIQUETES_POR_PARQUE_ALCANZADO);
-        }
-     */
+
     @Test
     public void validarCreacionTiqueteFinDeSemanaTest() {
         // arrange

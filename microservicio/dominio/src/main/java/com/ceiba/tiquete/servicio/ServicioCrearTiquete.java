@@ -11,6 +11,7 @@ public class ServicioCrearTiquete {
 
     private static final String EL_USUARIO_NO_EXISTE = "El suario no existe";
     private static final String EL_PARQUE_NO_EXISTE = "El parque no existe";
+    private static final String EL_TIQUETE_NO_EXISTE = "El tiquete no existe";
 
 
     private final RepositorioTiquete repositorioTiquete;

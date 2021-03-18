@@ -6,6 +6,8 @@ import com.ceiba.tiquete.modelo.entidad.Tiquete;
 import com.ceiba.tiquete.puerto.repositorio.RepositorioTiquete;
 import com.ceiba.usuario.puerto.repositorio.RepositorioUsuario;
 
+import java.time.DayOfWeek;
+
 public class ServicioActualizarTiquete {
 
 
@@ -23,7 +25,6 @@ public class ServicioActualizarTiquete {
         this.repositorioUsuario = repositorioUsuario;
         this.repositorioParque = repositorioParque;
         this.validadorTiquete = new ValidadorTiquete(this.repositorioTiquete);
-
     }
 
     public void ejecutar(Tiquete tiquete) {
@@ -57,4 +58,5 @@ public class ServicioActualizarTiquete {
             throw new ExcepcionTiquete(EL_PARQUE_NO_EXISTE);
         }
     }
+
 }

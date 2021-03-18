@@ -31,18 +31,14 @@ public class ValidadorTiquete {
     }
 
     public void validarFinDeSemana(Tiquete tiquete) {
-        if (tiquete.getFechaCompra().getDayOfWeek() == DayOfWeek.FRIDAY) {
+        LocalDate fechaCompra = tiquete.getFechaCompra();
+
+        if (fechaCompra.getDayOfWeek() == DayOfWeek.FRIDAY
+                || fechaCompra.getDayOfWeek() == DayOfWeek.SATURDAY
+                || fechaCompra.getDayOfWeek() == DayOfWeek.SUNDAY) {
             tiquete.setValor(VALOR_TIQUETE_FIN_DE_SEMANA);
         } else {
-            if (tiquete.getFechaCompra().getDayOfWeek() == DayOfWeek.SATURDAY) {
-                tiquete.setValor(VALOR_TIQUETE_FIN_DE_SEMANA);
-            } else {
-                if (tiquete.getFechaCompra().getDayOfWeek() == DayOfWeek.SUNDAY) {
-                    tiquete.setValor(VALOR_TIQUETE_FIN_DE_SEMANA);
-                } else {
-                    tiquete.setValor(VALOR_TIQUETE_SEMANA);
-                }
-            }
+            tiquete.setValor(VALOR_TIQUETE_SEMANA);
         }
     }
 
