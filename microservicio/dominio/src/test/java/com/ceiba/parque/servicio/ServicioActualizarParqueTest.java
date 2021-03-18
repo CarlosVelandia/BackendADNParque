@@ -28,10 +28,20 @@ public class ServicioActualizarParqueTest {
         MockitoAnnotations.initMocks(this);
     }
 
+
+    @Test
+    public void validarExistenciaPreviaId() {
+        //arrange
+        Parque parque = new ParqueTestDataBuilder().build();
+        Mockito.when(repositorioParque.existeId(parque.getId())).thenReturn(false);
+        //act - assert
+        BasePrueba.assertThrows(() -> servicioActualizarParque.ejecutar(parque), ExcepcionParque.class, EL_PARQUE_NO_EXISTE_EN_EL_SISTEMA);
+    }
+
     @Test
     public void validarExistenciaPreviaCodigo() {
         //arrange
-        Parque parque = new ParqueTestDataBuilder().conId(1l).conCodigo("637904").build();
+        Parque parque = new ParqueTestDataBuilder().build();
         Mockito.when(repositorioParque.existeId(parque.getId())).thenReturn(true);
         Mockito.when(repositorioParque.existeCodigo(parque.getCodigo())).thenReturn(true);
         //act - assert

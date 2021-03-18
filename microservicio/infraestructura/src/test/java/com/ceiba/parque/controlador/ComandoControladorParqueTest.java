@@ -1,6 +1,8 @@
-package com.ceiba.usuario.controlador;
+package com.ceiba.parque.controlador;
 
 import com.ceiba.ApplicationMock;
+import com.ceiba.parque.comando.ComandoParque;
+import com.ceiba.parque.testdatabuilder.ComandoParqueTestDataBuilder;
 import com.ceiba.usuario.comando.ComandoUsuario;
 import com.ceiba.usuario.testdatabuilder.ComandoUsuarioTestDataBuilder;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -20,13 +22,18 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = ApplicationMock.class)
-@WebMvcTest(ComandoControladorUsuario.class)
-public class ComandoControladorUsuarioTest {
+@WebMvcTest(ComandoControladorParque.class)
+public class ComandoControladorParqueTest {
 
-    private static final String CEDULA_USUARIO_NUEVO = "123456789";
-    private static final String NOMBRE_USUARIO_NUEVO = "Nuevo Pensonaje";
-    private static final String CEDULA_USUARIO_ACTUALIZAR = "987654321";
-    private static final String NOMBRE_USUARIO_ACTUALIZAR = "Actualizar Pensonaje";
+    private static final String NOMBRE_PARQUE_NUEVO="Nuevo Parque";
+    private static final String CODIGO_PARQUE_NUEVO="654321";
+    private static final String DIRECCION_PARQUE_NUEVO="Cra test # 4-56";
+    private static final String TELEFONO_PARQUE_NUEVO="654321";
+
+    private static final String NOMBRE_PARQUE_ACTUALIZAR="Actualizar Parque";
+    private static final String CODIGO_PARQUE_ACTUALIZAR="000000";
+    private static final String DIRECCION_PARQUE_ACTUALIZAR="Cra actualizar # 12-34";
+    private static final String TELEFONO_PARQUE_ACTUALIZAR="9999999";
 
     @Autowired
     private ObjectMapper objectMapper;
@@ -35,14 +42,14 @@ public class ComandoControladorUsuarioTest {
     private MockMvc mocMvc;
 
     @Test
-    public void crear() throws Exception {
+    public void crear() throws Exception{
         // arrange
-        ComandoUsuario usuario = new ComandoUsuarioTestDataBuilder().conNombre(NOMBRE_USUARIO_NUEVO).conCedula(CEDULA_USUARIO_NUEVO).build();
+        ComandoParque parque = new ComandoParqueTestDataBuilder().conNombre(NOMBRE_PARQUE_NUEVO).conCodigo(CODIGO_PARQUE_NUEVO).conDireccion(DIRECCION_PARQUE_NUEVO).conTelefono(TELEFONO_PARQUE_NUEVO).build();
 
         // act - assert
-        mocMvc.perform(post("/usuarios")
+        mocMvc.perform(post("/parques")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(usuario)))
+                .content(objectMapper.writeValueAsString(parque)))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().json("{'valor': 4 }"));
@@ -51,26 +58,23 @@ public class ComandoControladorUsuarioTest {
     @Test
     public void actualizar() throws Exception {
         // arrange
-        Long id = 3L;
-        ComandoUsuario usuario = new ComandoUsuarioTestDataBuilder()
-                .conNombre(NOMBRE_USUARIO_ACTUALIZAR)
-                .conCedula(CEDULA_USUARIO_ACTUALIZAR)
-                .build();
+        Long id = 2L;
+        ComandoParque parque = new ComandoParqueTestDataBuilder().conNombre(NOMBRE_PARQUE_ACTUALIZAR).conCodigo(CODIGO_PARQUE_ACTUALIZAR).conDireccion(DIRECCION_PARQUE_ACTUALIZAR).conTelefono(TELEFONO_PARQUE_ACTUALIZAR).build();
 
         // act - assert
-        mocMvc.perform(put("/usuarios/{id}", id)
+        mocMvc.perform(put("/parques/{id}", id)
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(usuario)))
+                .content(objectMapper.writeValueAsString(parque)))
                 .andExpect(status().isOk());
     }
 
     @Test
     public void eliminar() throws Exception {
         // arrange
-        Long id = 2L;
+        Long id = 3L;
 
         // act - assert
-        mocMvc.perform(delete("/usuarios/{id}", id)
+        mocMvc.perform(delete("/parques/{id}", id)
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());

@@ -4,7 +4,7 @@ import com.ceiba.BasePrueba;
 import com.ceiba.usuario.excepcion.ExcepcionUsuario;
 import com.ceiba.usuario.modelo.entidad.Usuario;
 import com.ceiba.usuario.puerto.repositorio.RepositorioUsuario;
-import com.ceiba.usuario.servicio.testdatabuilder.UsuarioTestDataBuilder;
+import com.ceiba.usuario.testdatabuilder.UsuarioTestDataBuilder;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
