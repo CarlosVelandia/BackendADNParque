@@ -10,7 +10,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin(origins = {"http://localhost:4200"})
+@CrossOrigin(origins = {"*"})
 @RestController
 @RequestMapping("/tiquetes")
 @Api(tags = {"Controlador comando tiquete"})
@@ -40,7 +40,7 @@ public class ComandoControladorTiquete {
         manejadorActualizarTiquete.ejecutar(comandoTiquete);
     }
 
-    @DeleteMapping(value = "/{id})")
+    @DeleteMapping(value = "/{id}")
     @ApiOperation("Eliminar Tiquete")
     public void eliminar(@PathVariable Long id) {
         manejadorEliminarTiquete.ejecutar(id);
