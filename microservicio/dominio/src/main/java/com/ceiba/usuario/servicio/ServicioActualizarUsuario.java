@@ -7,6 +7,7 @@ import com.ceiba.usuario.puerto.repositorio.RepositorioUsuario;
 public class ServicioActualizarUsuario {
 
     private static final String EL_USUARIO_NO_EXISTE_EN_EL_SISTEMA = "El usuario no existe en el sistema";
+    private static final String LA_CEDULA_YA_EXISTE_EN_EL_SISTEMA = "La cedula ya existe en el sistema";
 
     private final RepositorioUsuario repositorioUsuario;
 
@@ -16,6 +17,7 @@ public class ServicioActualizarUsuario {
 
     public void ejecutar(Usuario usuario) {
         validarExistenciaPrevia(usuario);
+        validarExistenciaPreviaCedulaExcluyendoId(usuario);
         this.repositorioUsuario.actualizar(usuario);
     }
 
@@ -23,6 +25,13 @@ public class ServicioActualizarUsuario {
         boolean existe = this.repositorioUsuario.existeId(usuario.getId());
         if (!existe) {
             throw new ExcepcionUsuario(EL_USUARIO_NO_EXISTE_EN_EL_SISTEMA);
+        }
+    }
+
+    private void validarExistenciaPreviaCedulaExcluyendoId(Usuario usuario) {
+        boolean existe = this.repositorioUsuario.existeExcluyendoId(usuario.getId(), usuario.getCedula());
+        if (existe) {
+            throw new ExcepcionUsuario(LA_CEDULA_YA_EXISTE_EN_EL_SISTEMA);
         }
     }
 }

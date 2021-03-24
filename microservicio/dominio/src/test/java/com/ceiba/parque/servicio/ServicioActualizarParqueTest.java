@@ -15,7 +15,7 @@ import org.mockito.MockitoAnnotations;
 public class ServicioActualizarParqueTest {
 
     private static final String EL_PARQUE_NO_EXISTE_EN_EL_SISTEMA = "El parque no existe en el sistema";
-    private static final String EL_CODIGO_PARQUE_NO_EXISTE_EN_EL_SISTEMA = "El codigo del parque no existe en el sistema";
+    private static final String EL_CODIGO_PARQUE_YA_EXISTE_EN_EL_SISTEMA = "El codigo del parque ya existe en el sistema";
 
     @Mock
     private RepositorioParque repositorioParque;
@@ -43,19 +43,11 @@ public class ServicioActualizarParqueTest {
         //arrange
         Parque parque = new ParqueTestDataBuilder().build();
         Mockito.when(repositorioParque.existeId(parque.getId())).thenReturn(true);
-        Mockito.when(repositorioParque.existeCodigo(parque.getCodigo())).thenReturn(true);
+        Mockito.when(repositorioParque.existeExcluyendoId(parque.getId(), parque.getCodigo())).thenReturn(true);
         //act - assert
-        BasePrueba.assertThrows(() -> servicioActualizarParque.ejecutar(parque), ExcepcionParque.class, EL_CODIGO_PARQUE_NO_EXISTE_EN_EL_SISTEMA);
+        BasePrueba.assertThrows(() -> servicioActualizarParque.ejecutar(parque), ExcepcionParque.class, EL_CODIGO_PARQUE_YA_EXISTE_EN_EL_SISTEMA);
     }
 
-    @Test
-    public void validarExistenciaPreviaExcluyendoId() {
-        //arrange
-        Parque parque = new ParqueTestDataBuilder().build();
-        Mockito.when(repositorioParque.existeExcluyendoId(parque.getId(), parque.getCodigo())).thenReturn(false);
-        //act - assert
-        BasePrueba.assertThrows(() -> servicioActualizarParque.ejecutar(parque), ExcepcionParque.class, EL_PARQUE_NO_EXISTE_EN_EL_SISTEMA);
-    }
 
     @Test
     public void validarActualizarParqueTest() {

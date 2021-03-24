@@ -7,7 +7,7 @@ import com.ceiba.parque.puerto.respositorio.RepositorioParque;
 public class ServicioActualizarParque {
 
     private static final String EL_PARQUE_NO_EXISTE_EN_EL_SISTEMA = "El parque no existe en el sistema";
-    private static final String EL_CODIGO_PARQUE_NO_EXISTE_EN_EL_SISTEMA = "El codigo del parque no existe en el sistema";
+    private static final String EL_CODIGO_PARQUE_YA_EXISTE_EN_EL_SISTEMA = "El codigo del parque ya existe en el sistema";
 
     private final RepositorioParque repositorioParque;
 
@@ -29,9 +29,9 @@ public class ServicioActualizarParque {
     }
 
     private void validarExistenciaPreviaCodigo(Parque parque) {
-        boolean existe = this.repositorioParque.existeCodigo(parque.getCodigo());
+        boolean existe = this.repositorioParque.existeExcluyendoId(parque.getId(), parque.getCodigo());
         if (existe) {
-            throw new ExcepcionParque(EL_CODIGO_PARQUE_NO_EXISTE_EN_EL_SISTEMA);
+            throw new ExcepcionParque(EL_CODIGO_PARQUE_YA_EXISTE_EN_EL_SISTEMA);
         }
     }
 }
