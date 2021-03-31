@@ -16,20 +16,20 @@ public class ServicioActualizarParque {
     }
 
     public void ejecutar(Parque parque) {
-        validarExistenciaPreviaParque(parque);
-        validarExistenciaPreviaCodigo(parque);
+        validarExistenciaPreviaParque(parque.getId());
+        validarExistenciaPreviaCodigo(parque.getId(),parque.getCodigo());
         this.repositorioParque.actualizar(parque);
     }
 
-    private void validarExistenciaPreviaParque(Parque parque) {
-        boolean existe = this.repositorioParque.existeId(parque.getId());
+    private void validarExistenciaPreviaParque(Long id) {
+        boolean existe = this.repositorioParque.existeId(id);
         if (!existe) {
             throw new ExcepcionParque(EL_PARQUE_NO_EXISTE_EN_EL_SISTEMA);
         }
     }
 
-    private void validarExistenciaPreviaCodigo(Parque parque) {
-        boolean existe = this.repositorioParque.existeExcluyendoId(parque.getId(), parque.getCodigo());
+    private void validarExistenciaPreviaCodigo(Long id, String codigo) {
+        boolean existe = this.repositorioParque.existeExcluyendoId(id,codigo);
         if (existe) {
             throw new ExcepcionParque(EL_CODIGO_PARQUE_YA_EXISTE_EN_EL_SISTEMA);
         }

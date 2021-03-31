@@ -16,20 +16,20 @@ public class ServicioActualizarUsuario {
     }
 
     public void ejecutar(Usuario usuario) {
-        validarExistenciaPrevia(usuario);
-        validarExistenciaPreviaCedulaExcluyendoId(usuario);
+        validarExistenciaPrevia(usuario.getId());
+        validarExistenciaPreviaCedulaExcluyendoId(usuario.getId(),usuario.getCedula());
         this.repositorioUsuario.actualizar(usuario);
     }
 
-    private void validarExistenciaPrevia(Usuario usuario) {
-        boolean existe = this.repositorioUsuario.existeId(usuario.getId());
+    private void validarExistenciaPrevia(Long id) {
+        boolean existe = this.repositorioUsuario.existeId(id);
         if (!existe) {
             throw new ExcepcionUsuario(EL_USUARIO_NO_EXISTE_EN_EL_SISTEMA);
         }
     }
 
-    private void validarExistenciaPreviaCedulaExcluyendoId(Usuario usuario) {
-        boolean existe = this.repositorioUsuario.existeExcluyendoId(usuario.getId(), usuario.getCedula());
+    private void validarExistenciaPreviaCedulaExcluyendoId(Long id, String cedula) {
+        boolean existe = this.repositorioUsuario.existeExcluyendoId(id,cedula);
         if (existe) {
             throw new ExcepcionUsuario(LA_CEDULA_YA_EXISTE_EN_EL_SISTEMA);
         }

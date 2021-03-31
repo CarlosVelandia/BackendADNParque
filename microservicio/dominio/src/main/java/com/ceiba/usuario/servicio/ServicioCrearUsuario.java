@@ -17,20 +17,20 @@ public class ServicioCrearUsuario {
     }
 
     public Long ejecutar(Usuario usuario) {
-        validarExistenciaUsuarioPreviaCedula(usuario);
-        validarExistenciaUsuarioId(usuario);
+        validarExistenciaUsuarioPreviaCedula(usuario.getCedula());
+        validarExistenciaUsuarioId(usuario.getId());
         return this.repositorioUsuario.crear(usuario);
     }
 
-    private void validarExistenciaUsuarioPreviaCedula(Usuario usuario) {
-        boolean existe = this.repositorioUsuario.existeCedula(usuario.getCedula());
+    private void validarExistenciaUsuarioPreviaCedula(String cedula) {
+        boolean existe = this.repositorioUsuario.existeCedula(cedula);
         if (existe) {
             throw new ExcepcionUsuario(LA_CEDULA_YA_EXISTE);
         }
     }
 
-    private void validarExistenciaUsuarioId(Usuario usuario) {
-        boolean existe = this.repositorioUsuario.existeId(usuario.getId());
+    private void validarExistenciaUsuarioId(Long id) {
+        boolean existe = this.repositorioUsuario.existeId(id);
         if (existe) {
             throw new ExcepcionUsuario(EL_USUARIO_YA_EXISTE);
         }

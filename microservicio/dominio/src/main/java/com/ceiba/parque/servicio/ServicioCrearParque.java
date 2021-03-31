@@ -17,28 +17,28 @@ public class ServicioCrearParque {
     }
 
     public Long ejecutar(Parque parque) {
-        validarExistenciaParquePrevia(parque);
-        validarExistenciaParquePreviaCodigo(parque);
-        validarExistenciaParqueId(parque);
+        validarExistenciaParquePrevia(parque.getNombre());
+        validarExistenciaParquePreviaCodigo(parque.getCodigo());
+        validarExistenciaParqueId(parque.getId());
         return this.repositorioParque.crear(parque);
     }
 
-    private void validarExistenciaParquePrevia(Parque parque) {
-        boolean existe = this.repositorioParque.existe(parque.getNombre());
+    private void validarExistenciaParquePrevia(String nombre) {
+        boolean existe = this.repositorioParque.existe(nombre);
         if (existe) {
             throw new ExcepcionParque(EL_NOMBRE_DEL_PARQUE_YA_EXISTE_EN_EL_SISTEMA);
         }
     }
 
-    private void validarExistenciaParquePreviaCodigo(Parque parque) {
-        boolean existe = this.repositorioParque.existeCodigo(parque.getCodigo());
+    private void validarExistenciaParquePreviaCodigo(String codigo) {
+        boolean existe = this.repositorioParque.existeCodigo(codigo);
         if (existe) {
             throw new ExcepcionParque(EL_CODIGO_DEL_PARQUE_YA_EXISTE_EN_EL_SISTEMA);
         }
     }
 
-    private void validarExistenciaParqueId(Parque parque) {
-        boolean existe = this.repositorioParque.existeId(parque.getId());
+    private void validarExistenciaParqueId(Long id) {
+        boolean existe = this.repositorioParque.existeId(id);
         if (existe) {
             throw new ExcepcionParque(EL_PARQUE_YA_EXISTE_EN_EL_SISTEMA);
         }
