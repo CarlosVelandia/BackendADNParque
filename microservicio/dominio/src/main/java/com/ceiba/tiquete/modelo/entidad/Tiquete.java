@@ -54,8 +54,6 @@ public class Tiquete {
         this.idUsuario = idUsuario;
         this.idParque = idParque;
 
-       // this.valor = valor;
-
     }
 
     public void validarDiaLunes(LocalDate fechaCompra) {
