@@ -75,6 +75,23 @@ public class ServicioCrearTiqueteTest {
         BasePrueba.assertThrows(() -> tiqueteTestDataBuilder.build(), ExcepcionValorObligatorio.class, SE_DEBE_INGRESAR_LA_FECHA_DE_COMPRA);
     }
 
+    @Test
+    public void validarDiaLunesTest() {
+        // arrange
+        TiqueteTestDataBuilder tiqueteTestDataBuilder = new TiqueteTestDataBuilder().conFechaCompra(FECHA_LUNES);
+        // act - assert
+        BasePrueba.assertThrows(() -> tiqueteTestDataBuilder.build(), ExcepcionTiquete.class, LUNES_NO_SE_VENDEN_TIQUETES);
+    }
+
+/*    @Test
+    public void validarCreacionTiqueteFinDeSemanaTest() {
+        // arrange
+        TiqueteTestDataBuilder tiqueteTestDataBuilder = new TiqueteTestDataBuilder().conFechaCompra(FECHA_FIN_DE_SEMANA);
+        // act - assert
+        BasePrueba.assertThrows(() -> tiqueteTestDataBuilder.build(), ExcepcionTiquete.class, LUNES_NO_SE_VENDEN_TIQUETES);
+    }*/
+
+
 
     @Test
     public void validarExcepcionExistenciaUsuarioTest() {
@@ -93,16 +110,6 @@ public class ServicioCrearTiqueteTest {
         Mockito.when(repositorioParque.existeId(tiquete.getIdParque())).thenReturn(false);
         // act - assert
         BasePrueba.assertThrows(() -> servicioCrearTiquete.ejecutar(tiquete), ExcepcionTiquete.class, EL_PARQUE_NO_EXISTE);
-    }
-
-    @Test
-    public void validarDiaLunesTest() {
-        // arrange
-        Tiquete tiquete = new TiqueteTestDataBuilder().conFechaCompra(FECHA_LUNES).build();
-        Mockito.when(repositorioUsuario.existeId(tiquete.getIdUsuario())).thenReturn(true);
-        Mockito.when(repositorioParque.existeId(tiquete.getIdParque())).thenReturn(true);
-        // act - assert
-        BasePrueba.assertThrows(() -> servicioCrearTiquete.ejecutar(tiquete), ExcepcionTiquete.class, LUNES_NO_SE_VENDEN_TIQUETES);
     }
 
     @Test

@@ -27,32 +27,30 @@ public class ServicioActualizarTiquete {
     }
 
     public void ejecutar(Tiquete tiquete) {
-        validarExistenciaTiquete(tiquete);
-        validarExistenciaUsuario(tiquete);
-        validarExistenciaParque(tiquete);
-        validadorTiquete.validarDiaLunes(tiquete.getFechaCompra());
-        validadorTiquete.maximoTiquetesPersona(tiquete);
-        validadorTiquete.maximoTiquetesParque(tiquete);
-        validadorTiquete.validarFinDeSemana(tiquete);
+        validarExistenciaTiquete(tiquete.getId());
+        validarExistenciaUsuario(tiquete.getIdUsuario());
+        validarExistenciaParque(tiquete.getIdParque());
+        validadorTiquete.maximoTiquetesPersona(tiquete.getFechaCompra(), tiquete.getIdUsuario());
+        validadorTiquete.maximoTiquetesParque(tiquete.getFechaCompra(), tiquete.getIdParque());
         this.repositorioTiquete.actualizar(tiquete);
     }
 
-    private void validarExistenciaTiquete(Tiquete tiquete) {
-        boolean existe = this.repositorioTiquete.existeId(tiquete.getId());
+    private void validarExistenciaTiquete(Long id) {
+        boolean existe = this.repositorioTiquete.existeId(id);
         if (!existe) {
             throw new ExcepcionTiquete(EL_TIQUETE_NO_EXISTE);
         }
     }
 
-    private void validarExistenciaUsuario(Tiquete tiquete) {
-        boolean existe = this.repositorioUsuario.existeId(tiquete.getIdUsuario());
+    private void validarExistenciaUsuario(Long idUsuario) {
+        boolean existe = this.repositorioUsuario.existeId(idUsuario);
         if (!existe) {
             throw new ExcepcionTiquete(EL_USUARIO_NO_EXISTE);
         }
     }
 
-    private void validarExistenciaParque(Tiquete tiquete) {
-        boolean existe = this.repositorioParque.existeId(tiquete.getIdParque());
+    private void validarExistenciaParque(Long idParque) {
+        boolean existe = this.repositorioParque.existeId(idParque);
         if (!existe) {
             throw new ExcepcionTiquete(EL_PARQUE_NO_EXISTE);
         }

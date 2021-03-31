@@ -82,6 +82,14 @@ public class ServicioActualizarTiqueteTest {
     @Test
     public void validarActualizacionTiqueteDiaLunes() {
         // arrange
+        TiqueteTestDataBuilder tiqueteTestDataBuilder = new TiqueteTestDataBuilder().conFechaCompra(FECHA_LUNES);
+        // act - assert
+        BasePrueba.assertThrows(() -> tiqueteTestDataBuilder.build(), ExcepcionTiquete.class, LUNES_NO_SE_VENDEN_TIQUETES);
+    }
+
+/*    @Test
+    public void validarActualizacionTiqueteDiaLunes() {
+        // arrange
         Tiquete tiquete = new TiqueteTestDataBuilder().conFechaCompra(FECHA_LUNES).build();
         Mockito.when(repositorioTiquete.existeId(tiquete.getId())).thenReturn(true);
         Mockito.when(repositorioUsuario.existeId(tiquete.getIdUsuario())).thenReturn(true);
@@ -91,8 +99,7 @@ public class ServicioActualizarTiqueteTest {
 
         // act - assert
         BasePrueba.assertThrows(() -> servicioActualizarTiquete.ejecutar(tiquete), ExcepcionTiquete.class, LUNES_NO_SE_VENDEN_TIQUETES);
-
-    }
+    }*/
 
     @Test
     public void validarMaximoTiquetesPersonaTest() {
