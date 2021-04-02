@@ -25,13 +25,14 @@ public class ServicioCrearTiqueteTest {
     private static final String LUNES_NO_SE_VENDEN_TIQUETES = "Los Lunes no se pueden vender tiquetes por mantenimiento del parque";
     private static final String LIMITE_TIQUETES_POR_PERSONA_ALCANZADO = "Solo se permite un maximo de 5 tiquetes por persona";
     private static final String LIMITE_TIQUETES_POR_PARQUE_ALCANZADO = "Solo se dispone de un maximo de 50 tiquetes por dia";
-    private static final String FECHA_LUNES = "08-03-2021";
-    private static final String FECHA_FIN_DE_SEMANA = "13-03-2021";
-    private static final String FECHA_DIA_NORMAL = "10-03-2021";
+    private static final String FECHA_LUNES = "2021-03-08";
+    private static final String FECHA_FIN_DE_SEMANA = "2021-03-13";
+    private static final String FECHA_DIA_NORMAL = "2021-03-10";
     private static final int MAXIMO_TIQUETES_POR_PERSONA = 5;
     private static final int TIQUETES_PERMITIDOS_POR_PERSONA = 4;
     private static final int MAXIMO_TIQUETES_POR_PARQUE = 15;
     private static final int TIQUETES_PERMITIDOS_POR_PARQUE = 14;
+    private static final double VALOR_TIQUETE_FIN_SEMANA = 30000;
 
 
     @Mock
@@ -82,16 +83,6 @@ public class ServicioCrearTiqueteTest {
         // act - assert
         BasePrueba.assertThrows(() -> tiqueteTestDataBuilder.build(), ExcepcionTiquete.class, LUNES_NO_SE_VENDEN_TIQUETES);
     }
-
-/*    @Test
-    public void validarCreacionTiqueteFinDeSemanaTest() {
-        // arrange
-        TiqueteTestDataBuilder tiqueteTestDataBuilder = new TiqueteTestDataBuilder().conFechaCompra(FECHA_FIN_DE_SEMANA);
-        // act - assert
-        BasePrueba.assertThrows(() -> tiqueteTestDataBuilder.build(), ExcepcionTiquete.class, LUNES_NO_SE_VENDEN_TIQUETES);
-    }*/
-
-
 
     @Test
     public void validarExcepcionExistenciaUsuarioTest() {

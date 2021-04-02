@@ -15,7 +15,7 @@ public class TiqueteTestDataBuilder {
         this.id = 0l;
         this.idUsuario = 1l;
         this.idParque = 1l;
-        this.fechaCompra = "03-10-2021";
+        this.fechaCompra = "2021-10-03";
 
     }
 

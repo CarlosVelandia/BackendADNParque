@@ -14,7 +14,6 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -28,12 +27,12 @@ public class ComandoControladorTiqueteTest {
 
     private static final Long ID_USUARIO_CREAR = 1l;
     private static final Long ID_PARQUE_CREAR = 1l;
-    private static final String FECHA_COMPRA_CREAR = "20-03-2021";
+    private static final String FECHA_COMPRA_CREAR = "2021-03-20";
     private static final double VALOR_CRAR = 30000;
 
     private static final Long ID_USUARIO_ACTUALIZAR = 1l;
     private static final Long ID_PARQUE_ACTUALIZAR = 1l;
-    private static final String FECHA_COMPRA_ACTUALIZAR = "20-03-2021";
+    private static final String FECHA_COMPRA_ACTUALIZAR = "2021-03-20";
     private static final double VALOR_ACTUALIZAR = 30000;
 
     @Autowired

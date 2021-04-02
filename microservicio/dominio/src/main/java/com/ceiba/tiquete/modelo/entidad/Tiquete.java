@@ -67,7 +67,7 @@ public class Tiquete {
 
     }
 
-    public void validarDiaLunes(LocalDate fechaCompra) {
+    public static void validarDiaLunes(LocalDate fechaCompra) {
         if (fechaCompra.getDayOfWeek() == DayOfWeek.MONDAY) {
             throw new ExcepcionTiquete(LUNES_NO_SE_VENDEN_TIQUETES);
         }
