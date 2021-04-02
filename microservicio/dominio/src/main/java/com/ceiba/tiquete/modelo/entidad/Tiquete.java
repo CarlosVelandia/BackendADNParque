@@ -13,7 +13,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static com.ceiba.dominio.ValidadorArgumento.*;
+import static com.ceiba.dominio.ValidadorArgumento.validarNumerico;
+import static com.ceiba.dominio.ValidadorArgumento.validarObligatorio;
 
 @Getter
 @Setter

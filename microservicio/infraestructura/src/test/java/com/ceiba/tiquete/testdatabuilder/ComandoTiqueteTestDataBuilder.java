@@ -1,9 +1,6 @@
 package com.ceiba.tiquete.testdatabuilder;
 
-import com.ceiba.parque.comando.ComandoParque;
 import com.ceiba.tiquete.comando.ComandoTiquete;
-
-import java.time.LocalDate;
 
 public class ComandoTiqueteTestDataBuilder {
 

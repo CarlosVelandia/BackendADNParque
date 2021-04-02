@@ -1,8 +1,6 @@
 package com.ceiba.tiquete.controlador;
 
 import com.ceiba.ApplicationMock;
-import com.ceiba.parque.comando.ComandoParque;
-import com.ceiba.parque.testdatabuilder.ComandoParqueTestDataBuilder;
 import com.ceiba.tiquete.comando.ComandoTiquete;
 import com.ceiba.tiquete.testdatabuilder.ComandoTiqueteTestDataBuilder;
 import com.fasterxml.jackson.databind.ObjectMapper;

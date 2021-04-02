@@ -3,8 +3,6 @@ package com.ceiba.parque.controlador;
 import com.ceiba.ApplicationMock;
 import com.ceiba.parque.comando.ComandoParque;
 import com.ceiba.parque.testdatabuilder.ComandoParqueTestDataBuilder;
-import com.ceiba.usuario.comando.ComandoUsuario;
-import com.ceiba.usuario.testdatabuilder.ComandoUsuarioTestDataBuilder;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
