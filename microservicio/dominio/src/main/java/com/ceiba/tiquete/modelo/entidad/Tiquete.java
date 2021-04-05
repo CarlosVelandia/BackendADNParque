@@ -68,13 +68,13 @@ public class Tiquete {
 
     }
 
-    public static void validarDiaLunes(LocalDate fechaCompra) {
+    private static void validarDiaLunes(LocalDate fechaCompra) {
         if (fechaCompra.getDayOfWeek() == DayOfWeek.MONDAY) {
             throw new ExcepcionTiquete(LUNES_NO_SE_VENDEN_TIQUETES);
         }
     }
 
-    public void validarFinDeSemana(LocalDate fechaCompra) {
+    private void validarFinDeSemana(LocalDate fechaCompra) {
         if (fechaCompra.getDayOfWeek() == DayOfWeek.FRIDAY
                 || fechaCompra.getDayOfWeek() == DayOfWeek.SATURDAY
                 || fechaCompra.getDayOfWeek() == DayOfWeek.SUNDAY) {
@@ -84,7 +84,7 @@ public class Tiquete {
         }
     }
 
-    public static void validarFechaCorrecta(String valor, String mensaje){
+    private static void validarFechaCorrecta(String valor, String mensaje){
         try {
             SimpleDateFormat formatoFecha = new SimpleDateFormat(FORMATO_FECHA);
             formatoFecha.setLenient(false);
@@ -93,7 +93,7 @@ public class Tiquete {
             throw new ExcepcionValorInvalido(mensaje);
         }
     }
-    public static void validarFormatoFecha(String valor, String mensaje) {
+    private static void validarFormatoFecha(String valor, String mensaje) {
 
         Pattern patronFecha = Pattern.compile("\\d{4}-\\d{2}-\\d{2}");
         Matcher comparadorFormatoFecha = patronFecha.matcher(valor);
@@ -102,11 +102,12 @@ public class Tiquete {
         }
     }
 
-    public LocalDate obtenerLocalDateDesdeUnString(String fecha) {
+    private LocalDate obtenerLocalDateDesdeUnString(String fecha) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(FORMATO_FECHA);
         return LocalDate.parse(fecha, formatter);
     }
-    public String darFormatoFecha(String fecha) {
+
+    private String darFormatoFecha(String fecha) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(FORMATO_FECHA);
         return formatter.format(LocalDate.parse(fecha, formatter));
     }
