@@ -4,7 +4,6 @@ jasypt:
     algorithm: PBEWithMD5AndDES
 
 server:
-  allowedOrigins: http://localhost:4200
   port: 8084
   servlet:
     context-path: /tiquetes-parque-diversiones
