@@ -45,17 +45,16 @@ public class Tiquete {
 
     public Tiquete(Long id, Long idUsuario, Long idParque, String fechaCompra, Double valor) {
 
+        this.valor=valor;
+
         validarObligatorio(idUsuario, SE_DEBE_INGRESAR_EL_ID_DEL_USUARIO);
         validarObligatorio(idParque, SE_DEBE_INGRESAR_EL_ID_DEL_PARQUE);
         validarObligatorio(fechaCompra, SE_DEBE_INGRESAR_LA_FECHA_DE_COMPRA);
         validarNumerico(Long.toString(idUsuario), EL_ID_USUARIO_DEBE_SER_NUMERICO);
         validarNumerico(Long.toString(idParque), EL_ID_PARQUE_DEBE_SER_NUMERICO);
-
         validarFormatoFecha(darFormatoFecha(fechaCompra), FORMATO_DE_FECHA_DE_COMPRA_INCORRECTA);
         validarFechaCorrecta(darFormatoFecha(fechaCompra), LA_FECHA_DE_COMPRA_INVALIDA);
-
         LocalDate fechaCompraFinal = obtenerLocalDateDesdeUnString(fechaCompra);
-
         validarFinDeSemana(fechaCompraFinal);
         validarDiaLunes(fechaCompraFinal);
 
