@@ -32,7 +32,6 @@ public class ServicioCrearTiqueteTest {
     private static final int TIQUETES_PERMITIDOS_POR_PERSONA = 4;
     private static final int MAXIMO_TIQUETES_POR_PARQUE = 15;
     private static final int TIQUETES_PERMITIDOS_POR_PARQUE = 14;
-    private static final double VALOR_TIQUETE_FIN_SEMANA = 30000;
 
 
     @Mock

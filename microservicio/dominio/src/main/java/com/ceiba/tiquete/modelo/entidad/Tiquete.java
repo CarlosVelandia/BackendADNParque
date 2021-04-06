@@ -29,8 +29,6 @@ public class Tiquete {
     private static final String LUNES_NO_SE_VENDEN_TIQUETES = "Los Lunes no se pueden vender tiquetes por mantenimiento del parque";
     private static final String LIMITE_TIQUETES_POR_PERSONA_ALCANZADO = "Solo se permite un maximo de 5 tiquetes por persona";
     private static final String LIMITE_TIQUETES_POR_PARQUE_ALCANZADO = "Solo se dispone de un maximo de 50 tiquetes por dia";
-    private static final int MAXIMO_TIQUETES_POR_PERSONA = 5;
-    private static final int MAXIMO_TIQUETES_POR_PARQUE = 15;
     private static final double VALOR_TIQUETE_SEMANA = 15000;
     private static final double VALOR_TIQUETE_FIN_DE_SEMANA = 30000;
 
